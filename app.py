@@ -682,5 +682,6 @@ def settings_color():
             return apology("no new color?", 400)
         else:
             session["color"] = request.form.get("new_color")
+            db.execute("UPDATE users SET color = ? WHERE user_id = ?", request.form.get("new_color"), session["user_id"])
 
     return redirect("/settings")
