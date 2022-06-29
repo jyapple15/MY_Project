@@ -40,7 +40,17 @@
                     if (old_color != localStorage.general_color)
                     {
                         document.getElementById(old_color).disabled = true
-                        document.cookie = `color=${color_options[i].id}`
+                    }
+                })
+
+                //TESTING
+                color_options[i].addEventListener('click', function(){
+                    old_color = get
+                    document.cookie = `color=${color_options[i].id}`
+                    document.getElementById(localStorage.general_color).disabled = false
+                    if (old_color != localStorage.general_color)
+                    {
+
                     }
                 })
             }
