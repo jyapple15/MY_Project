@@ -229,7 +229,6 @@ def modified_task():
 def events():
     """Saves events"""
     timestamp = datetime.datetime.now()
-    print(timestamp)
     Ndate = timestamp.strftime("%Y-%m-%d")
     Ntime = timestamp.strftime("%X")
     if request.method == "POST":
@@ -258,6 +257,7 @@ def events():
     # return template w current events
     db.execute("UPDATE events SET status = 'passed' WHERE (date < ? OR (date = ? AND end_time < ? AND end_time IS NOT NULL))", Ndate, Ndate, Ntime)
     Upcoming = db.execute("SELECT event, description, date, start_time, end_time, event_id FROM events WHERE (date > ? OR (date = ? AND (end_time > ? OR end_time IS NULL))) AND user_id = ? ORDER BY date, start_time, end_time", Ndate, Ndate, Ntime, session["user_id"])
+    print(timestamp.strftime("%x %X %c"))
     return render_template("events.html", Events=Upcoming)
 
 
