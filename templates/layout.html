@@ -16,20 +16,6 @@
 
         <link href="/static/main.css" rel="stylesheet">
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                if (localStorage.general_color)
-                {
-                    document.getElementById(localStorage.general_color).disabled = false
-                }
-                else
-                {
-                    localStorage.setItem("general_color", "red")
-                    document.getElementById(localStorage.general_color).disabled = false
-                }
-            })
-        </script>
-
         <!-- Colours -->
         <link class="general_colors" id="red" href="/static/red.css" rel="stylesheet" disabled>
         <link class="general_colors" id="orange" href="/static/orange.css" rel="stylesheet" disabled>
@@ -41,6 +27,21 @@
         <link class="general_colors" id="blue_purple" href="/static/blue_purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                if (localStorage.general_color)
+                {
+                    stylesheets = 
+                    document.getElementById(localStorage.general_color).disabled = false
+                }
+                else
+                {
+                    localStorage.setItem("general_color", "red")
+                    document.getElementById(localStorage.general_color).disabled = false
+                }
+            })
+        </script>
 
         <title>MY Planner: {% block title %}{% endblock %}</title>
 
