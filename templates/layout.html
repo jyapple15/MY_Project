@@ -29,7 +29,7 @@
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
         -->
 
-        {% if session["color"]}
+        {% if session["color"] %}
         <link class="general_colors" id="{{session["color"]}}" href="/static/{{session["color"]}}.css" rel="stylesheet">
         {% else %}
         <div>???</div>
