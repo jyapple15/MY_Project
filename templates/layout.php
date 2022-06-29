@@ -33,8 +33,8 @@ session_start();
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
 
         <?php
-        $_SESSION["color"] = {{"green"}};
-        echo "Session variables are set.";
+        $_SESSION["color"] = "green";
+        echo ($_SESSION["color"]);
         ?>
 
 
