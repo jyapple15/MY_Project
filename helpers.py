@@ -62,6 +62,7 @@ def time12h(value):
 def time24h(value):
     """Format value as 24h time."""
     value = str(value)
+    print(value)
     return datetime.time(int(value[0] + value[1]), int(value[3] + value[4])).strftime("%H%M")
 
 def tominutes(value):
