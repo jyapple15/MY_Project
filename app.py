@@ -576,7 +576,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
-        session["color"] = "red"
+        session["color"] = rows[0]["color"]
 
         # Redirect user to home page
         return redirect("/")
@@ -682,5 +682,5 @@ def settings_color():
             return apology("no new color?", 400)
         else:
             session["color"] = request.form.get("new_color")
-            
+
     return redirect("/settings")
