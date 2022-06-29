@@ -246,7 +246,7 @@ def events():
                     if request.form.get("end_time") < request.form.get("start_time"):
                         return apology("end time should be after it starts")
             db.execute("INSERT INTO events(event, date, user_id) VALUES (?, ?, ?)", request.form.get("event"), request.form.get("date"), session["user_id"])
-            newE = db.execute("SELECT MAX(event_id) AS newE FROM events WHERE user_id = ?", session["user_id"])[0]["newE"]
+            newE = db.execute("SELECT MAX(event_id) AS new_e FROM events WHERE user_id = ?", session["user_id"])[0]["new_e"]
             if request.form.get("description"):
                 db.execute("UPDATE events SET description = ? WHERE event_id = ?", request.form.get("description"), newE)
             if request.form.get("start_time"):
