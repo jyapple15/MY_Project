@@ -55,12 +55,15 @@ def date(value):
 
 def time12h(value):
     """Format value as 12h time."""
+    value = str(value)
     return datetime.time(int(value[0] + value[1]), int(value[3] + value[4])).strftime("%I:%M %p")
 
 
 def time24h(value):
     """Format value as 24h time."""
+    value = str(value)
     return datetime.time(int(value[0] + value[1]), int(value[3] + value[4])).strftime("%H%M")
 
 def tominutes(value):
+    value = str(value)
     return (int(value[0] + value[1]) * 60 + int(value[3] + value[4]))
