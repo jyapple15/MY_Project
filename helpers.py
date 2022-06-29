@@ -46,7 +46,7 @@ def days_in_month(calendar_month, calendar_year):
 
 def date(value):
     """Format value as date."""
-    return datetime.datetime(int(value[0] + value[1] + value[2] + value[3]), int(value[5] + value[6]), int(value[8] + value[9])).strftime("%d %B %Y")
+    return datetime.date(int(value[0] + value[1] + value[2] + value[3]), int(value[5] + value[6]), int(value[8] + value[9])).strftime("%d %B %Y")
 
 
 def time12h(value):
