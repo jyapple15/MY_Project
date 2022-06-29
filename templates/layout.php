@@ -34,19 +34,13 @@ if(!isset($_COOKIE["color"]))
         <link class="general_colors" id="blue_purple" href="/static/blue_purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" `<?php
-        if($_COOKIE["color"] != "")
+        if($_COOKIE["color"] != "pink")
         {
             echo "disabled";
         }
         ?>`>
 
-        <!--TESTING-->
-        <?php
-        if($_COOKIE["color"] != "")
-        {
-            echo "disabled";
-        }
-        ?>
+        
 
 
 <!--
