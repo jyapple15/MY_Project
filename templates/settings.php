@@ -40,7 +40,7 @@
                     if (old_color != localStorage.general_color)
                     {
                         document.getElementById(old_color).disabled = true
-                        setcookie("color", "", time() + (86400 * 30), "/")
+                        document.cookie = `color=${color_options[i].id}`
                     }
                 })
             }
