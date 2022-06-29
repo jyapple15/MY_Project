@@ -32,12 +32,12 @@
             document.addEventListener('DOMContentLoaded', function(){
                 if (localStorage.general_color)
                 {
-                    document.getElementById(localStorage.general_color).removeAttribute('disabled')
+                    document.getElementById(localStorage.general_color).disabled = false
                 }
                 else
                 {
                     localStorage.setItem("general_color", "red")
-                    document.getElementById(localStorage.general_color).removeAttribute('disabled')
+                    document.getElementById(localStorage.general_color).disabled = false
                 }
             })
         </script>
