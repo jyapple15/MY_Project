@@ -229,6 +229,7 @@ def modified_task():
 def events():
     """Saves events"""
     timestamp = datetime.datetime.now()
+    print(timestamp)
     Ndate = timestamp.strftime("%Y-%m-%d")
     Ntime = timestamp.strftime("%X")
     if request.method == "POST":
