@@ -142,8 +142,8 @@
 {% for week in weeks %}
 <div class="autoscroll weektype_schedule visually-hidden">
     <table class="fixedweek bord pastelred">
-        <div class="startweek visually-hidden">{{week[7][0]["MIN(start_time)"]|time24h}}</div>
-        <div class="endweek visually-hidden">{{week[7][0]["MAX(end_time)"]|time24h}}</div>
+        <div class="startweek visually-hidden">{{week[7][0]["start_time"]|time24h}}</div>
+        <div class="endweek visually-hidden">{{week[7][0]["end_time"]|time24h}}</div>
         <tr class="description">
             <td><div class="gap"></div></td>
             <td class="time"><div>0000</div></td>

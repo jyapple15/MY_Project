@@ -413,7 +413,7 @@ def fixed():
             fri = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Fri%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
             sat = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Sat%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
             sun = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Sun%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
-            startend = db.execute("SELECT MIN(start_time), MAX(end_time) FROM fixed WHERE user_id = ? AND week_id = ?", session["user_id"], weektypes[i]["week_id"])
+            startend = db.execute("SELECT MIN(start_time) AS start_time, MAX(end_time) AS end_time FROM fixed WHERE user_id = ? AND week_id = ?", session["user_id"], weektypes[i]["week_id"])
             x.append(mon)
             x.append(tue)
             x.append(wed)
