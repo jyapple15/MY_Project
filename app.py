@@ -404,7 +404,7 @@ def fixed():
         return render_template("fixed.html")
     else:
         weeks = []
-        for i in range(countweeks[0]["COUNT(week_id)"]):
+        for i in range(int(countweeks[0]["COUNT(week_id)"])):
             x = []
             mon = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Mon%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
             tue = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Tue%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
