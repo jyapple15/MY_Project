@@ -34,12 +34,14 @@ session_start();
 
         <!--TESTING-->
         <?php
-        if(isset($_COOKIE[$cookie_name])) {
-            echo "Cookie named '" . $cookie_name . "' is not set!";
-          } else {
+        if(isset($_COOKIE["color"]))
+        {
+            echo $_COOKIE["color"];
+        } else {
             echo "Cookie '" . $cookie_name . "' is set!<br>";
             echo "Value is: " . $_COOKIE[$cookie_name];
-          }
+        }
+        ?>
 
 
         <script>
