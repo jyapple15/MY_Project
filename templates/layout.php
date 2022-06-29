@@ -1,10 +1,3 @@
-<?php
-if(!isset($_COOKIE["color"]))
-{
-    setcookie("color", "red");
-}
-?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -23,7 +16,7 @@ if(!isset($_COOKIE["color"]))
 
         <link href="/static/main.css" rel="stylesheet">
 
-        <!-- Colours
+        <!-- Colours -->
         <link class="general_colors" id="red" href="/static/red.css" rel="stylesheet" disabled>
         <link class="general_colors" id="orange" href="/static/orange.css" rel="stylesheet" disabled>
         <link class="general_colors" id="yellow" href="/static/yellow.css" rel="stylesheet" disabled>
@@ -34,19 +27,7 @@ if(!isset($_COOKIE["color"]))
         <link class="general_colors" id="blue_purple" href="/static/blue_purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
-        -->
 
-        <?php
-        if(isset($_COOKIE["color"]))
-        {
-            echo "<br>";
-        }
-        ?>
-
-
-
-
-<!--
         <script>
             document.addEventListener('DOMContentLoaded', function(){
                 if (localStorage.general_color)
@@ -60,7 +41,6 @@ if(!isset($_COOKIE["color"]))
                 }
             })
         </script>
-        -->
 
         <title>MY Planner: {% block title %}{% endblock %}</title>
 
