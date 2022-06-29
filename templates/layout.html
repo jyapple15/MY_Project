@@ -32,7 +32,7 @@
             document.addEventListener('DOMContentLoaded', function(){
                 if (localStorage.general_color)
                 {
-                    stylesheets = 
+                    stylesheets = document.querySelectorAll(".general_colors")
                     document.getElementById(localStorage.general_color).disabled = false
                 }
                 else
