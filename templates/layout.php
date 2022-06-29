@@ -41,7 +41,7 @@ if(!isset($_COOKIE["color"]))
         {
             echo '<link class="general_colors" id="' . $_COOKIE['color'] . '" href="/static/' . $_COOKIE['color'] . '.css" rel="stylesheet">';
         }
-        ?>` />
+        ?>
 
 
 
