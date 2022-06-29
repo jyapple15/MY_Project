@@ -24,26 +24,32 @@ if(!isset($_COOKIE["color"]))
         <link href="/static/main.css" rel="stylesheet">
 
         <!-- Colours -->
-        <link class="general_colors" id="red" href="/static/red.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="orange" href="/static/orange.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="yellow" href="/static/yellow.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="lime_green" href="/static/lime_green.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="green" href="/static/green.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="turquoise" href="/static/turquoise.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="blue" href="/static/blue.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="blue_purple" href="/static/blue_purple.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" disabled>
-        <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
+        <link class="general_colors" id="red" href="/static/red.css" rel="stylesheet" >
+        <link class="general_colors" id="orange" href="/static/orange.css" rel="stylesheet" >
+        <link class="general_colors" id="yellow" href="/static/yellow.css" rel="stylesheet" >
+        <link class="general_colors" id="lime_green" href="/static/lime_green.css" rel="stylesheet" >
+        <link class="general_colors" id="green" href="/static/green.css" rel="stylesheet" >
+        <link class="general_colors" id="turquoise" href="/static/turquoise.css" rel="stylesheet" >
+        <link class="general_colors" id="blue" href="/static/blue.css" rel="stylesheet" >
+        <link class="general_colors" id="blue_purple" href="/static/blue_purple.css" rel="stylesheet" >
+        <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" >
+        <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" <?php
+        if($_COOKIE["color"] != "")
+        {
+            echo "disabled";
+        }
+        ?> >
 
         <!--TESTING-->
         <?php
         if($_COOKIE["color"] != "")
         {
-            echo $_COOKIE["color"];
+            echo "disabled";
         }
         ?>
 
 
+<!--
         <script>
             document.addEventListener('DOMContentLoaded', function(){
                 if (localStorage.general_color)
@@ -57,6 +63,7 @@ if(!isset($_COOKIE["color"]))
                 }
             })
         </script>
+        -->
 
         <title>MY Planner: {% block title %}{% endblock %}</title>
 

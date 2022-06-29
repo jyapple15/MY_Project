@@ -33,6 +33,8 @@
                 color_options[i].addEventListener('mouseleave', function(){
                     color_options[i].classList.add("low_opacity")
                 })
+                
+                /*
                 color_options[i].addEventListener('click', function(){
                     old_color = localStorage.general_color
                     localStorage.setItem("general_color", color_options[i].id)
@@ -41,7 +43,7 @@
                     {
                         document.getElementById(old_color).disabled = true
                     }
-                })
+                }) */
 
                 //TESTING
                 color_options[i].addEventListener('click', function(){
