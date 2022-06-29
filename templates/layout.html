@@ -32,9 +32,6 @@
         {% if session["color"] %}
         <link class="general_colors" id="{{session["color"]}}" href="/static/{{session["color"]}}.css" rel="stylesheet">
         {% else %}
-        <div>???</div>
-        {% endif %}
-
         <script>
             document.addEventListener('DOMContentLoaded', function(){
                 if (localStorage.general_color)
@@ -48,6 +45,9 @@
                 }
             })
         </script>
+        {% endif %}
+
+
 
         <title>MY Planner: {% block title %}{% endblock %}</title>
 
