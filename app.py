@@ -399,12 +399,12 @@ def fixed():
 
     #Provide weekdata
     weektypes = db.execute("SELECT * FROM weektypes WHERE user_id = ?", session["user_id"])
-    countweeks = db.execute("SELECT COUNT(week_id) FROM weektypes WHERE user_id = ?", session["user_id"])
+    countweeks = db.execute("SELECT COUNT(week_id) AS count FROM weektypes WHERE user_id = ?", session["user_id"])
     if not countweeks:
         return render_template("fixed.html")
     else:
         weeks = []
-        for i in range(int(countweeks[0]["COUNT(week_id)"])):
+        for i in range(countweeks[0]["count"]):
             x = []
             mon = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Mon%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
             tue = db.execute("SELECT activity, description, start_time, end_time, duration, activity_id FROM fixed WHERE user_id = ? AND week_id = ? AND day LIKE '%Tue%' ORDER BY start_time, end_time", session["user_id"], weektypes[i]["week_id"])
