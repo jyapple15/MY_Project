@@ -38,15 +38,9 @@ if(!isset($_COOKIE["color"]))
         {
             echo "disabled";
         }
-        ?> >
+        ?>>
 
-        <!--TESTING-->
-        <?php
-        if($_COOKIE["color"] != "")
-        {
-            echo "disabled";
-        }
-        ?>
+
 
 
 <!--
