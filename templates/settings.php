@@ -45,13 +45,7 @@
 
                 //TESTING
                 color_options[i].addEventListener('click', function(){
-                    old_color = get
                     document.cookie = `color=${color_options[i].id}`
-                    document.getElementById(localStorage.general_color).disabled = false
-                    if (old_color != localStorage.general_color)
-                    {
-
-                    }
                 })
             }
         });

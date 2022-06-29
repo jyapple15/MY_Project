@@ -32,7 +32,9 @@ session_start();
         <link class="general_colors" id="purple" href="/static/purple.css" rel="stylesheet" disabled>
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
 
+        <!--TESTING-->
         <?php
+        if 
         $_SESSION["color"] = "green";
         echo ($_SESSION["color"]);
         ?>
