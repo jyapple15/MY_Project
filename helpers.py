@@ -46,7 +46,7 @@ def days_in_month(calendar_month, calendar_year):
 
 def date(value):
     """Format value as date."""
-    print(value[0])
+    print(value)
     year = int(value[0] + value[1] + value[2] + value[3])
     month = int(value[5] + value[6])
     day = int(value[8] + value[9])
