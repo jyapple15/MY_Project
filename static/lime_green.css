@@ -1,0 +1,30 @@
+/* Color Scheme  */
+.color.pastelred
+{
+    color: #00ff00;
+}
+
+.bg.pastelred
+{
+    background-color: #80ff80;
+    border: none;
+}
+
+.bg2.pastelred
+{
+    background-color: #b3ffb3;
+    border: none;
+}
+
+.bord.pastelred
+{
+    padding: 2%;
+    padding-bottom: 0%;
+    border: 2px solid #00ff00;
+}
+
+.bord2.pastelred
+{
+    border: 1px solid #e6ffe6;
+    border-top: none;
+}

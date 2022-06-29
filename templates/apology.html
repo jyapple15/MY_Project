@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- Error pic and message -->
+    <div id="error_message">{{ message }}</div>
+    <img alt="{{ code }}" class="img-fluid" src="https://i.pinimg.com/originals/59/ee/db/59eedba2343b9f8190d601c2da2e3f0b.gif" title="{{ code }}">
+{% endblock %}
