@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_COOKIE["color"]))
+{
+    setcookie("color", "red");
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +40,6 @@ session_start();
         if(isset($_COOKIE["color"]))
         {
             echo $_COOKIE["color"];
-        } else {
-            echo "Cookie '" . $cookie_name . "' is set!<br>";
-            echo "Value is: " . $_COOKIE[$cookie_name];
         }
         ?>
 
