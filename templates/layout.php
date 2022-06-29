@@ -37,7 +37,7 @@ if(!isset($_COOKIE["color"]))
 
         <!--TESTING-->
         <?php
-        if(isset($_COOKIE["color"]))
+        if($_COOKIE["color"] != "")
         {
             echo $_COOKIE["color"];
         }
