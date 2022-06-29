@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -29,7 +33,9 @@
         <link class="general_colors" id="pink" href="/static/pink.css" rel="stylesheet" disabled>
 
         <?php
-        
+        $_SESSION["favcolor"] = "green";
+        $_SESSION["favanimal"] = "cat";
+        echo "Session variables are set.";
         ?>
 
 
