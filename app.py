@@ -672,3 +672,15 @@ def settings():
                 db.execute("UPDATE users SET hash = ? WHERE id = ?", generate_password_hash(request.form.get("new_password")), session["user_id"])
 
     return render_template("settings.html", username=username)
+
+@app.route("/settings_color", methods=["GET", "POST"])
+@login_required
+def settings_color():
+    if request.method == "POST":
+
+        if not request.form.get("new_color"):
+            return apology("no new color?", 400)
+        else:
+            session["color"] = request.form.get("new_color")
+            
+    return redirect("/settings")

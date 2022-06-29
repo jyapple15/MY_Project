@@ -37,15 +37,23 @@
                 color_options[i].addEventListener('click', function(){
                     old_color = localStorage.general_color
                     localStorage.setItem("general_color", color_options[i].id)
+                    /*
                     document.getElementById(localStorage.general_color).disabled = false
                     if (old_color != localStorage.general_color)
                     {
                         document.getElementById(old_color).disabled = true
-                    }
+                    }*/
+
+                    document.querySelector("#new_color").value = color_options[i].id
+                    document.querySelector("#settings_color").submit()
                 })
             }
         });
     </script>
+
+    <form action="/settings_color" id="settings_color" method="post">
+        <input id="new_color" name="new_color" type="hidden">
+    </form>
 
     <table width="85%">
         <tr>
@@ -159,7 +167,7 @@
         </tr>
     </table>
     <hr>
-    <form action="/settings" method="post">
+    <form action="/settings" id="settings" method="post">
         <table id="settings_table">
             <tr>
                 <th width="86px"><label class="float-end pe-1" for="new_username">Username:</label></th>
