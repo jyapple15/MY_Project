@@ -293,7 +293,7 @@ def modified_event():
             return apology("must provide date", 400)
         elif request.form.get("date") < Ndate:
             return apology("date has passed", 400)
-        elif request.form.get("date") == Ndate and request.form.get("end_time") < Ntime:
+        elif request.form.get("date") == Ndate and request.form.get("end_time") and request.form.get("end_time") < Ntime:
             return apology("time has passed", 400)
         else:
             newE = request.form.get("event_id")
