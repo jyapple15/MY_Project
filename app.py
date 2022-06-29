@@ -145,7 +145,7 @@ def addtask():
             return apology("due date has passed", 400)
         else:
             db.execute("INSERT INTO tasks(task, due_date, user_id) VALUES (?, ?, ?)", request.form.get("task"), request.form.get("due_date"), session["user_id"])
-            newT = db.execute("SELECT MAX(task_id) AS newT FROM tasks WHERE user_id = ?", session["user_id"])[0]["newT"]
+            newT = db.execute("SELECT MAX(task_id) AS new_t FROM tasks WHERE user_id = ?", session["user_id"])[0]["new_t"]
             if request.form.get("description"):
                 db.execute("UPDATE tasks SET description = ? WHERE task_id = ?", request.form.get("description"), newT)
     # redirect
@@ -393,7 +393,7 @@ def fixed():
 
             #Insert activity
             db.execute("INSERT INTO fixed(activity, day, start_time, end_time, duration, week_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)", request.form.get("activity"), x, request.form.get("start_time"), request.form.get("end_time"), duration, week_id, session["user_id"])
-            newA = db.execute("SELECT MAX(activity_id) AS newA FROM fixed WHERE user_id = ?", session["user_id"])[0]["newA"]
+            newA = db.execute("SELECT MAX(activity_id) AS new_a FROM fixed WHERE user_id = ?", session["user_id"])[0]["new_a"]
             if request.form.get("description"):
                 db.execute("UPDATE fixed SET description = ? WHERE activity_id = ?", request.form.get("description"), newA)
 
