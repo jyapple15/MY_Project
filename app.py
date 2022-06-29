@@ -463,8 +463,6 @@ def chosen():
 def modify_activity():
     """Modify saved activities"""
     if request.method == "POST":
-        if not request.form.get("Q_delete"):
-            return apology("Q_delete missing", 400)
         if not request.form.get("tomodify"):
             return apology ("no input?", 400)
         else:
