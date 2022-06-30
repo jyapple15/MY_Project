@@ -8,6 +8,10 @@ th
 {
     min-width: 101px;
 }
+tr
+{
+    max-width: 100%;
+}
 
 /* effects */
 .low_opacity
