@@ -247,12 +247,8 @@
                 bottoms = []
                 for (let i = 0; i < buttons.length; i++)
                 {
-                    tops[i] = elements[i].getBoundingClientRect().top
                     bottoms[i] = elements[i].getBoundingClientRect().bottom
                 }
-                tops.sort(function(a, b){
-                    return a - b
-                })
                 bottoms.sort(function(a, b){
                     return a - b
                 })
