@@ -587,6 +587,7 @@
                     element_height = parseInt(element.style.height.replace('px)',''))
 
                     // TESTING
+                    e.preventDefault()
                     change = e.clientY - y_mouse;
                     element_height = element_height + change
                     element.style.height = `${element_height}px`
