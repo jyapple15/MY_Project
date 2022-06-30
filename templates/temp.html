@@ -243,19 +243,24 @@
                 buttons = today_activity.querySelectorAll("button")
 
                 //TESTING
-                bottoms = []
-                for (let i = 0; i < buttons.length - 1; i++)
+                if (buttons.length > 1)
                 {
-                    bottoms[i] = buttons[i].getBoundingClientRect().bottom
-                }
-                bottoms.sort(function(a, b){
-                    return a - b
-                })
-                for (let i = bottoms.length - 1; i > -1; i--)
-                {
-                    if (bottoms[i] > )
+                    bottoms = []
+                    for (let i = 0; i < buttons.length - 1; i++)
                     {
-
+                        bottoms[i] = buttons[i].getBoundingClientRect().bottom
+                    }
+                    bottoms.sort(function(a, b){
+                        return a - b
+                    })
+                    div_bottom = div.getBoundingClientRect().bottom + div.scrollTop;
+                    for (let i = bottoms.length - 1; i > -1; i--)
+                    {
+                        if (bottoms[i] < div_bottom)
+                        {
+                            last_button_bottom = bottoms[i]
+                            break
+                        }
                     }
                 }
 
