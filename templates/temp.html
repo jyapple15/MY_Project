@@ -264,7 +264,6 @@
                 }
 
 
-                // TESTING
                 corner = document.createElement("img")
                 corner.src = "https://i.imgur.com/4kAurAV.png"
                 today_activity.appendChild(corner)
@@ -292,13 +291,11 @@
                 button_time.style.height = "30px";
                 button_time.style.transform = button_activity.style.transform
 
-                // TESTING (+ corner)
                 /* Make draggable */
                 draggable(button_activity, button_time, today_activity, today_time, button_activity, corner, "button")
                 set_time(button_time, today_activity)
             }
 
-            // TESTING (+ corner)
             /* Make draggable (translate)*/
             function draggable(element, pair, div, pair_div, clicked, corner, type){
                 var div_top = div.getBoundingClientRect().top + div.scrollTop;
@@ -586,7 +583,6 @@
                     element_bottom = element.getBoundingClientRect().bottom;
                     element_height = parseInt(element.style.height.replace('px)',''))
 
-                    // TESTING
                     e.preventDefault()
                     change = e.clientY - y_mouse;
                     y_mouse = e.clientY
@@ -602,7 +598,9 @@
                         element.style.height = "15px"
                     }
 
+                    /* redefine */
                     element_bottom = element.getBoundingClientRect().bottom;
+
                     /* if translated out of div */
                     elements = div.querySelectorAll(type)
                     pairs = pair_div.querySelectorAll(type)
@@ -642,44 +640,8 @@
                         }
                     }
 
-
-
-
                     original_transform = parseInt(corner.style.transform.replace('translateY(','').replace('px)',''))
                     corner.style.transform = `translateY(${original_transform + element_height - old_height}px)`
-                    //TESTING (end)
-
-                    /*
-                    elements = div.querySelectorAll(type)
-                    pairs = pair_div.querySelectorAll(type)
-
-                    tops = []
-                    bottoms = []
-                    for (let i = 0; i < elements.length; i++)
-                    {
-                        tops[i] = elements[i].getBoundingClientRect().top
-                        bottoms[i] = elements[i].getBoundingClientRect().bottom
-                    }
-                    tops.sort(function(a, b){
-                        return a - b
-                    })
-                    bottoms.sort(function(a, b){
-                        return a - b
-                    })
-
-                    for (let i = 0; i < tops.length; i++)
-                    {
-                        if (tops[i] > element_top)
-                        {
-                            if (element_bottom > tops[i])
-                            {
-                                element.style.resize = "none"
-                                element.style.height = `${element_height - element_bottom + tops[i]}px`
-                                break
-                            }
-                        }
-                    }
-                    */
 
                     pair.style.height = element.style.height
 
