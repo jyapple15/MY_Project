@@ -621,24 +621,35 @@
                         return a - b
                     })
 
-                    for (let i = 0; i < tops.length; i++)
+                    if (element_bottom > div_bottom)
                     {
-                        if (tops[i] > element_top)
+                        element_height = element_height - element_bottom + div_bottom
+                        element.style.height = `${element_height}px`
+                    }
+                    else
+                    {
+                        for (let i = 0; i < tops.length; i++)
                         {
-                            if (element_bottom > tops[i])
+                            if (tops[i] > element_top)
                             {
-                                element_height = element_height - element_bottom + tops[i]
-                                element.style.height = `${element_height}px`
-                                break
+                                if (element_bottom > tops[i])
+                                {
+                                    element_height = element_height - element_bottom + tops[i]
+                                    element.style.height = `${element_height}px`
+                                    break
+                                }
                             }
                         }
                     }
+
+
+
 
                     original_transform = parseInt(corner.style.transform.replace('translateY(','').replace('px)',''))
                     corner.style.transform = `translateY(${original_transform + element_height - old_height}px)`
                     //TESTING (end)
 
-                    /* 
+                    /*
                     elements = div.querySelectorAll(type)
                     pairs = pair_div.querySelectorAll(type)
 
