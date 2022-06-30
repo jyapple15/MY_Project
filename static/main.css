@@ -9,6 +9,11 @@ input[type="text"]
     max-width: 60%;
 }
 
+label
+{
+    min-width: 101px;
+}
+
 /* effects */
 .low_opacity
 {
