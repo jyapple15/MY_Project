@@ -297,7 +297,7 @@
 
                 if (typeof last_button_bottom != "undefined")
                 {
-                    button_activity.style.transform = `translateY(${Math.trunc(last_button_bottom - buttons[buttons.length - 1].getBoundingClientRect().top)}px)`
+                    button_activity.style.transform = `translateY(${Math.trunc(last_button_bottom - div_top)}px)`
                 }
 
                 corner = document.createElement("img")
