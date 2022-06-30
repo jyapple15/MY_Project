@@ -588,7 +588,8 @@
 
                     // TESTING
                     change = e.clientY - y_mouse;
-                    element.style.height = 
+                    element_height = element_height + change
+                    element.style.height = `${element_height}px`
 
                     /* if translated out of div */
                     elements = div.querySelectorAll(type)
