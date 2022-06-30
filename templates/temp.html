@@ -323,10 +323,10 @@
                     x_mouse = e.clientX;
                     y_mouse = e.clientY;
 
-                    document.addEventListener("mousemove", restrict)
+                    document.addEventListener("mousemove", size_change)
                     document.addEventListener("mouseup", function(e){
                         e.preventDefault()
-                        document.removeEventListener("mousemove", restrict)
+                        document.removeEventListener("mousemove", size_change)
                     })
                 })
 
