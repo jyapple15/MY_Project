@@ -546,6 +546,9 @@
                         }
                     }
 
+                    new_transform = parseInt(element.style.transform.replace('translateY(','').replace('px)',''))
+                    corner.style.transform = `translateY(${new_transform + element_height - 10}px)`
+
                     pair.style.transform = element.style.transform
                     for (let i = 0; i < pairs.length; i++)
                     {
