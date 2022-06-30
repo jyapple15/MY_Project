@@ -590,7 +590,17 @@
                     e.preventDefault()
                     change = e.clientY - y_mouse;
                     element_height = element_height + change
-                    element.style.height = `${element_height}px`
+                    if (element_height >= 5)
+                    {
+                        element.style.height = `${element_height}px`
+                    }
+                    else
+                    {
+                        element.style.height = "5px"
+                    }
+
+
+                    element_bottom = element.getBoundingClientRect().bottom;
 
                     tops = []
                     bottoms = []
