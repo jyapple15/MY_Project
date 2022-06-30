@@ -261,20 +261,16 @@
 
                     div_top = today_activity.getBoundingClientRect().top + today_activity.scrollTop;
                     div_bottom = today_activity.getBoundingClientRect().bottom + today_activity.scrollTop;
-                    
+
                     for (let i = bottoms.length - 1; i > -1; i--)
                     {
                         if (i > 0)
                         {
-                            gaps[i] = tops[i] - bottoms[i - 1]
+                            gap = tops[i + 1] - bottoms[i]
                         }
-                        else if (i == 0)
+                        if (i == bottoms.length - 1)
                         {
-                            gaps[i] = tops[i] - div_top
-                        }
-                        if (i == tops.length - 1)
-                        {
-                            gaps[i + 1] = div_bottom - bottoms[i]
+                            gap = div_bottom - bottoms[i]
                         }
                         if (bottoms[i] < div_bottom && (bottoms[i] - tops[i - 1]) > )
                         {
