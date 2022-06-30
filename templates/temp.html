@@ -75,10 +75,11 @@
 
             /* set preset buttons */
             F_activities = document.querySelectorAll(".today_activity")
+            F_corners = document.querySelectorAll(".corner")
             F_timings = document.querySelectorAll(".today_time")
             for (let i = 0; i < F_activities.length; i++)
             {
-                draggable(F_activities[i], F_timings[i], today_activity, today_time, F_activities[i], "button")
+                draggable(F_activities[i], F_timings[i], today_activity, today_time, F_activities[i], F_corners[i], "button")
             }
 
             /* Save timetable */
@@ -764,11 +765,12 @@
                                         {% else %}
                                         <button class="bg2 pastelred today_activity black_text" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.name}}</button>
                                         {% endif %}
-                                        <img class="corner" style="transform: translateY({{activity.start_time|tominutes - 10}}px);" src="https://i.imgur.com/4kAurAV.png">
+                                        <img class="corner" style="transform: translateY({{activity.end_time|tominutes - 10}}px);" src="https://i.imgur.com/4kAurAV.png">
                                     {% endfor %}
                                     {% if fixed %}
                                         {% for activity in fixed %}
                                         <button class="bg2 pastelred today_activity black_text regular" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.activity}}</button>
+                                        <img class="corner" style="transform: translateY({{activity.end_time|tominutes - 10}}px);" src="https://i.imgur.com/4kAurAV.png">
                                         {% endfor %}
                                     {% endif %}
                                 </div></td>
