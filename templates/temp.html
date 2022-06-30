@@ -590,6 +590,7 @@
                     e.preventDefault()
                     change = e.clientY - y_mouse;
                     y_mouse = e.clientY
+                    old_height = element_height
                     element_height = element_height + change
                     if (element_height >= 15)
                     {
@@ -629,6 +630,8 @@
                         }
                     }
 
+                    original_transform = parseInt(corner.style.transform.replace('translateY(','').replace('px)',''))
+                    corner.style.transform = `translateY(${original_transform + }px)`
                     //TESTING (end)
 
                     /* if translated out of div */
