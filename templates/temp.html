@@ -264,13 +264,20 @@
 
                     for (let i = bottoms.length - 1; i > -1; i--)
                     {
+                        // Define last gaps
                         if (i == bottoms.length - 1)
                         {
                             gap = div_bottom - bottoms[i]
                         }
                         else
                         {
-                            gap = 
+                            gap = tops[i] - bottoms[i]
+                        }
+
+                        //Define first gap
+                        if (i == 0)
+                        {
+                            start_gap = tops[i] - div_top
                         }
 
                         if (gap > 30)
@@ -280,7 +287,15 @@
                         }
                         else if (i == 0)
                         {
-                            alert("Sorry, no space :/ (for default 30min)")
+                            if (start_gap > 30)
+                            {
+                                last_button_bottom = div_top
+                            }
+                            else
+                            {
+                                alert("Sorry, no space :/ (for default 30min)")
+                                return
+                            }
                         }
                     }
                 }
