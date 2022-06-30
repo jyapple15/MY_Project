@@ -264,20 +264,21 @@
 
                     for (let i = bottoms.length - 1; i > -1; i--)
                     {
-                        if (i > 0)
-                        {
-                            gap = tops[i + 1] - bottoms[i]
-                        }
                         if (i == bottoms.length - 1)
                         {
                             gap = div_bottom - bottoms[i]
                         }
-                        if (bottoms[i] < div_bottom && (bottoms[i] - tops[i - 1]) > )
+                        else
+                        {
+                            gap = 
+                        }
+
+                        if (gap > 30)
                         {
                             last_button_bottom = bottoms[i]
                             break
                         }
-                        else if (i == -1)
+                        else if (i == 0)
                         {
                             alert("Sorry, no space :/ (for default 30min)")
                         }
