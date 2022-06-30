@@ -4,6 +4,10 @@
     color: black;
 }
 
+input[type="text"]
+{
+    width: inherit;
+}
 th
 {
     min-width: 101px;
