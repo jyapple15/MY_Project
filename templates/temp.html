@@ -592,6 +592,18 @@
                     element_height = element_height + change
                     element.style.height = `${element_height}px`
 
+                    for (let i = 0; i < tops.length; i++)
+                    {
+                        if (tops[i] > element_top)
+                        {
+                            if (element_bottom > tops[i])
+                            {
+                                element.style.height = `${element_height - element_bottom + tops[i]}px`
+                                break
+                            }
+                        }
+                    }
+
                     /* if translated out of div */
                     elements = div.querySelectorAll(type)
                     pairs = pair_div.querySelectorAll(type)
@@ -611,6 +623,7 @@
                     })
 
                     /*REDO this to resize stop whenever reach another element*/
+                    /*
                     for (let i = 0; i < tops.length; i++)
                     {
                         if (tops[i] > element_top)
@@ -623,6 +636,7 @@
                             }
                         }
                     }
+                    */
 
                     pair.style.height = element.style.height
 
