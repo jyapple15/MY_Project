@@ -228,26 +228,15 @@
                     return
                 }
 
-                /* Create button */
-                button_activity = document.createElement("button")
-
-                /* Place button in div */
-                today_activity.appendChild(button_activity)
-
-                /* Standardise button */
-                button_activity.classList.add("bg2", "pastelred", "today_activity", "black_text")
-                button_activity.style.height = "30px";
-                button_activity.innerHTML = activity_name
-
                 /* Place button at end */
                 buttons = today_activity.querySelectorAll("button")
 
-                //TESTING
-                if (buttons.length > 1)
+                // Determine where to place button
+                if (buttons.length > 0)
                 {
                     tops = []
                     bottoms = []
-                    for (let i = 0; i < buttons.length - 1; i++)
+                    for (let i = 0; i < buttons.length; i++)
                     {
                         tops[i] = buttons[i].getBoundingClientRect().top
                         bottoms[i] = buttons[i].getBoundingClientRect().bottom
@@ -289,10 +278,22 @@
                             else
                             {
                                 alert("Sorry, no space :/ (for default 30min)")
+                                return
                             }
                         }
                     }
                 }
+
+                /* Create button */
+                button_activity = document.createElement("button")
+
+                /* Place button in div */
+                today_activity.appendChild(button_activity)
+
+                /* Standardise button */
+                button_activity.classList.add("bg2", "pastelred", "today_activity", "black_text")
+                button_activity.style.height = "30px";
+                button_activity.innerHTML = activity_name
 
                 /*
                 if (typeof buttons[buttons.length - 2] != "undefined")
