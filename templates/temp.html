@@ -319,7 +319,6 @@
 
                 /* (IMPORTANT) add for touch events too */
 
-                // TESTING
                 corner.addEventListener("mousedown", function(e){
                     element_top = element.getBoundingClientRect().top;
                     element_bottom = element.getBoundingClientRect().bottom;
@@ -328,10 +327,23 @@
                     x_mouse = e.clientX;
                     y_mouse = e.clientY;
 
-                    document.addEventListener("mousemove", restrict)
+                    document.addEventListener("mousemove", resize)
                     document.addEventListener("mouseup", function(e){
-                        e.preventDefault()
-                        document.removeEventListener("mousemove", restrict)
+                        document.removeEventListener("mousemove", resize)
+                    })
+                })
+
+                corner.addEventListener("touchstart", function(e){
+                    element_top = element.getBoundingClientRect().top;
+                    element_bottom = element.getBoundingClientRect().bottom;
+                    element_right = element.getBoundingClientRect().right;
+
+                    x_mouse = e.touches[0].clientX;
+                    y_mouse = e.touches[0].clientY;
+
+                    document.addEventListener("touchmove", resize)
+                    document.addEventListener("touchend", function(e){
+                        document.removeEventListener("touchmove", resize)
                     })
                 })
 
@@ -358,9 +370,6 @@
                         document.removeEventListener("mousemove", move)
                     })
                 })
-
-                /* TOUCH */
-                element.classList.add("remove_scroll")
 
                 clicked.addEventListener("touchstart", function(e){
                     element_top = element.getBoundingClientRect().top;
@@ -556,12 +565,18 @@
                     }
                 }
 
-                function restrict(e){
+                function resize(e){
+                    e.preventDefault()
                     element_top = element.getBoundingClientRect().top;
                     element_bottom = element.getBoundingClientRect().bottom;
                     element_height = parseInt(element.style.height.replace('px)',''))
 
-                    e.preventDefault()
+                    if (e == '[object TouchEvent]')
+                    {
+                        e.clientX = e.touches[0].clientX
+                        e.clientY = e.touches[0].clientY
+                    }
+
                     change = e.clientY - y_mouse;
                     y_mouse = e.clientY
                     old_height = element_height
