@@ -703,14 +703,14 @@
                                 <td><div id="today_activity">
                                     {% for activity in temp %}
                                         {% if activity.type == "fixed" %}
-                                        <button class="bg2 pastelred today_activity regular" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.name}}</button>
+                                        <button class="bg2 pastelred today_activity black_text regular" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.name}}</button>
                                         {% else %}
-                                        <button class="bg2 pastelred today_activity" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.name}}</button>
+                                        <button class="bg2 pastelred today_activity black_text" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.name}}</button>
                                         {% endif %}
                                     {% endfor %}
                                     {% if fixed %}
                                         {% for activity in fixed %}
-                                        <button class="bg2 pastelred today_activity regular" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.activity}}</button>
+                                        <button class="bg2 pastelred today_activity black_text regular" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.activity}}</button>
                                         {% endfor %}
                                     {% endif %}
                                 </div></td>
