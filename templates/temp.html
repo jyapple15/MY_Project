@@ -261,9 +261,8 @@
 
                     div_top = today_activity.getBoundingClientRect().top + today_activity.scrollTop;
                     div_bottom = today_activity.getBoundingClientRect().bottom + today_activity.scrollTop;
-                    gaps = []
-
-                    for (let i = 0; i < tops.length; i++)
+                    
+                    for (let i = bottoms.length - 1; i > -1; i--)
                     {
                         if (i > 0)
                         {
@@ -277,10 +276,6 @@
                         {
                             gaps[i + 1] = div_bottom - bottoms[i]
                         }
-                    }
-
-                    for (let i = bottoms.length - 1; i > -1; i--)
-                    {
                         if (bottoms[i] < div_bottom && (bottoms[i] - tops[i - 1]) > )
                         {
                             last_button_bottom = bottoms[i]
