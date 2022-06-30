@@ -592,6 +592,25 @@
                     element_height = element_height + change
                     element.style.height = `${element_height}px`
 
+                    tops = []
+                    bottoms = []
+
+                    for (let i = 0; i < elements.length; i++)
+                    {
+                        if (elements[i].isSameNode(element) === false)
+                        {
+                            tops[j] = elements[i].getBoundingClientRect().top
+                            bottoms[j] = elements[i].getBoundingClientRect().bottom
+                            j = j + 1
+                        }
+                    }
+                    tops.sort(function(a, b){
+                        return a - b
+                    })
+                    bottoms.sort(function(a, b){
+                        return a - b
+                    })
+
                     for (let i = 0; i < tops.length; i++)
                     {
                         if (tops[i] > element_top)
