@@ -4,10 +4,6 @@
     color: black;
 }
 
-input[type="text"]
-{
-    width: inherit;
-}
 th
 {
     min-width: 101px;
@@ -15,6 +11,10 @@ th
 tr
 {
     max-width: 100%;
+}
+td
+{
+    max-width: 100% - 101px
 }
 
 /* effects */
