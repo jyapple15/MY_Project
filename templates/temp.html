@@ -241,8 +241,6 @@
                 /* Place button at end */
                 buttons = today_activity.querySelectorAll("button")
 
-                
-
                 if (typeof buttons[buttons.length - 2] != "undefined")
                 {
                     for (let i = 1 ; i < buttons.length; i++)
@@ -264,6 +262,12 @@
                 {
                     button_activity.style.transform = `translateY(${Math.trunc(last_button_bottom - buttons[buttons.length - 1].getBoundingClientRect().top)}px)`
                 }
+
+                // TESTING
+                corner = document.createElement("img")
+                corner.src = "https://i.imgur.com/4kAurAV.png"
+                corner.classList.add("corner")
+                today_activity.appendChild(corner)
 
                 /* Create time button*/
                 button_time = document.createElement("button")
