@@ -749,7 +749,7 @@
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
         <b>Task?</b>
         {% for task in tasks %}
-        {% if task}
+        {% if task.status == }
         <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
         {% endfor %}
     </div>
