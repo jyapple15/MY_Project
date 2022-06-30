@@ -295,24 +295,6 @@
                 button_activity.style.height = "30px";
                 button_activity.innerHTML = activity_name
 
-                /*
-                if (typeof buttons[buttons.length - 2] != "undefined")
-                {
-                    for (let i = 1 ; i < buttons.length; i++)
-                    {
-                        x = buttons[i].getBoundingClientRect().bottom
-                        y = buttons[i-1].getBoundingClientRect().bottom
-                        if (i == 1)
-                        {
-                            last_button_bottom = y
-                        }
-                        if (x > y && i != buttons.length - 1)
-                        {
-                            last_button_bottom = x
-                        }
-                    }
-                } */
-
                 if (typeof last_button_bottom != "undefined")
                 {
                     button_activity.style.transform = `translateY(${Math.trunc(last_button_bottom - buttons[buttons.length - 1].getBoundingClientRect().top)}px)`
