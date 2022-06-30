@@ -20,11 +20,6 @@ th.restrict101
     opacity: 0.1;
 }
 
-.remove_scroll
-{
-    touch-action: none;
-}
-
 /* Size for brand */
 nav .navbar-brand
 {
@@ -309,6 +304,7 @@ input.hidden
     position: absolute;
     left: 0;
     top: 0;
+    touch-action: none;
 }
 
 .today_time
@@ -361,6 +357,7 @@ input.hidden
     right: 0;
     top: 0;
     opacity: 0.5;
+    touch-action: none;
 }
 
 

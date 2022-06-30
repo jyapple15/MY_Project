@@ -370,21 +370,6 @@
                     x_mouse = e.touches[0].clientX;
                     y_mouse = e.touches[0].clientY;
 
-                    if (e.touches[0].clientY > element_bottom - 19 && e.touches[0].clientX > element_right - 19)
-                    {
-                        element.classList.remove("remove_scroll")
-                        document.addEventListener("touchmove", restrict)
-                        document.addEventListener("touchend", function(e){
-                            document.removeEventListener("touchmove", restrict)
-                            element.style.resize = "vertical"
-                        })
-                        return
-                    }
-                    else
-                    {
-                        element.classList.add("remove_scroll")
-                    }
-
                     // get the mouse cursor position at startup:
                     if (element.style.transform)
                     {
