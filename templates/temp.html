@@ -268,8 +268,8 @@
                 corner.src = "https://i.imgur.com/4kAurAV.png"
                 today_activity.appendChild(corner)
                 corner.classList.add("corner")
-                to_transform = parseInt(element.style.transform.replace('translateY(','').replace('px)',''))
-                height_addition = parseInt(element.style.height.replace('px)',''))
+                to_transform = parseInt(button_activity.style.transform.replace('translateY(','').replace('px)',''))
+                height_addition = parseInt(button_activity.style.height.replace('px)',''))
                 corner.style.transform = `translateY(${to_transform + height_addition - 10}px)`
 
                 /* Create time button*/
