@@ -292,46 +292,15 @@
                 button_time.style.height = "30px";
                 button_time.style.transform = button_activity.style.transform
 
-                // TESTING
-                resize(button_activity, button_time, today_activity, today_time, corner, "button")
-
+                // TESTING (+ corner)
                 /* Make draggable */
-                draggable(button_activity, button_time, today_activity, today_time, button_activity, "button")
+                draggable(button_activity, button_time, today_activity, today_time, button_activity, corner, "button")
                 set_time(button_time, today_activity)
             }
 
-            // TESTING
-            function resize(element, pair, div, pair_div, clicked, type){
-                var div_top = div.getBoundingClientRect().top + div.scrollTop;
-                var div_bottom = div.getBoundingClientRect().bottom + div.scrollTop;
-
-                document.addEventListener("scroll", function(){
-                    div_top = div.getBoundingClientRect().top + div.scrollTop;
-                    div_bottom = div.getBoundingClientRect().bottom + div.scrollTop;
-                });
-
-                x_mouse = 0;
-                y_mouse = 0;
-                x_translate = 0;
-                y_translate = 0;
-
-                clicked.addEventListener("mousedown", function(e){
-                    element_top = element.getBoundingClientRect().top;
-                    element_bottom = element.getBoundingClientRect().bottom;
-                    element_right = element.getBoundingClientRect().right;
-
-                    x_mouse = e.clientX;
-                    y_mouse = e.clientY;
-
-                    document.addEventListener("mousemove", size_change)
-                    document.addEventListener("mouseup", function(e){
-                        e.preventDefault()
-                        document.removeEventListener("mousemove", size_change)
-                    })
-                })
-
+            // TESTING (+ corner)
             /* Make draggable (translate)*/
-            function draggable(element, pair, div, pair_div, clicked, type){
+            function draggable(element, pair, div, pair_div, clicked, corner, type){
                 var div_top = div.getBoundingClientRect().top + div.scrollTop;
                 var div_bottom = div.getBoundingClientRect().bottom + div.scrollTop;
 
@@ -351,6 +320,22 @@
                 });
 
                 /* (IMPORTANT) add for touch events too */
+
+                // TESTING
+                corner.addEventListener("mousedown",function(e){
+                    element_top = element.getBoundingClientRect().top;
+                    element_bottom = element.getBoundingClientRect().bottom;
+                    element_right = element.getBoundingClientRect().right;
+
+                    x_mouse = e.clientX;
+                    y_mouse = e.clientY;
+
+                    document.addEventListener("mousemove", restrict)
+                    document.addEventListener("mouseup", function(e){
+                        e.preventDefault()
+                        document.removeEventListener("mousemove", restrict)
+                    })
+                })
 
                 clicked.addEventListener("mousedown", function(e){
                     element_top = element.getBoundingClientRect().top;
