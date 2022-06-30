@@ -288,6 +288,11 @@ input.hidden
     margin-left: 5px;
 }
 
+#today_time
+{
+    width: 90px
+}
+
 #today_activity, #today_time
 {
     height: 1440px;
