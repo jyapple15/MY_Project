@@ -748,10 +748,10 @@
                             <tr>
                                 <td><div id="today_time">
                                     {% for activity in temp %}
-                                        <button class="today_time black_text" style=`height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);`>{{activity.start_time|time24h}}-{{activity.end_time|time24h}}</button>
+                                        <button class="today_time black_text" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.start_time|time24h}}-{{activity.end_time|time24h}}</button>
                                     {% endfor %}
                                     {% for activity in fixed %}
-                                        <button class="today_time black_text" style=`height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);`>{{activity.start_time|time24h}}-{{activity.end_time|time24h}}</button>
+                                        <button class="today_time black_text" style="height: {{activity.end_time|tominutes - activity.start_time|tominutes}}px; transform: translateY({{activity.start_time|tominutes}}px);">{{activity.start_time|time24h}}-{{activity.end_time|time24h}}</button>
                                     {% endfor %}
                                 </div></td>
                                 <td><div id="today_activity">
