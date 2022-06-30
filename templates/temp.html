@@ -271,7 +271,7 @@
                         }
                         else
                         {
-                            gap = tops[i] - bottoms[i]
+                            gap = tops[i + 1] - bottoms[i]
                         }
 
                         if (gap > 30)
@@ -289,9 +289,6 @@
                             else
                             {
                                 alert("Sorry, no space :/ (for default 30min)")
-                                alert(bottoms.length)
-                                alert(tops[i])
-                                alert(div_top)
                             }
                         }
                     }
