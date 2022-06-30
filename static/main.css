@@ -14,7 +14,8 @@ tr
 }
 td
 {
-    max-width: 100% - 101px
+    max-width: 100%;
+    padding-left: 101px
 }
 
 /* effects */
