@@ -245,21 +245,50 @@
                 //TESTING
                 if (buttons.length > 1)
                 {
+                    tops = []
                     bottoms = []
                     for (let i = 0; i < buttons.length - 1; i++)
                     {
+                        tops[i] = buttons[i].getBoundingClientRect().top
                         bottoms[i] = buttons[i].getBoundingClientRect().bottom
                     }
+                    tops.sort(function(a, b){
+                        return a - b
+                    })
                     bottoms.sort(function(a, b){
                         return a - b
                     })
+
+                    div_top = today_activity.getBoundingClientRect().top + today_activity.scrollTop;
                     div_bottom = today_activity.getBoundingClientRect().bottom + today_activity.scrollTop;
+                    gaps = []
+
+                    for (let i = 0; i < tops.length; i++)
+                    {
+                        if (i > 0)
+                        {
+                            gaps[i] = tops[i] - bottoms[i - 1]
+                        }
+                        else if (i == 0)
+                        {
+                            gaps[i] = tops[i] - div_top
+                        }
+                        if (i == tops.length - 1)
+                        {
+                            gaps[i + 1] = div_bottom - bottoms[i]
+                        }
+                    }
+
                     for (let i = bottoms.length - 1; i > -1; i--)
                     {
-                        if (bottoms[i] < div_bottom)
+                        if (bottoms[i] < div_bottom && (bottoms[i] - tops[i - 1]) > )
                         {
                             last_button_bottom = bottoms[i]
                             break
+                        }
+                        else if (i == -1)
+                        {
+                            alert("Sorry, no space :/ (for default 30min)")
                         }
                     }
                 }
