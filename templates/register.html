@@ -21,9 +21,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             document.addEventListener("mousedown", function(){
-                document.getElementById("myAnchor").removeAttribute("oninvalid");
+                document.getElementById("password").removeAttribute("oninvalid");
             })
-        })
+        }, {once : true})
 
         function requirement(){
             alert("Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit")
