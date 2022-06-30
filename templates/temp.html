@@ -314,6 +314,22 @@
                 y_mouse = 0;
                 x_translate = 0;
                 y_translate = 0;
+
+                clicked.addEventListener("mousedown", function(e){
+                    element_top = element.getBoundingClientRect().top;
+                    element_bottom = element.getBoundingClientRect().bottom;
+                    element_right = element.getBoundingClientRect().right;
+
+                    x_mouse = e.clientX;
+                    y_mouse = e.clientY;
+
+
+                    document.addEventListener("mousemove", restrict)
+                    document.addEventListener("mouseup", function(e){
+                        e.preventDefault()
+                        document.removeEventListener("mousemove", restrict)
+                        element.style.resize = "vertical"
+                    })
             }
 
             /* Make draggable (translate)*/
