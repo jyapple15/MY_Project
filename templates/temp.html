@@ -243,11 +243,10 @@
                 buttons = today_activity.querySelectorAll("button")
 
                 //TESTING
-                tops = []
                 bottoms = []
                 for (let i = 0; i < buttons.length - 1; i++)
                 {
-                    bottoms[i] = elements[i].getBoundingClientRect().bottom
+                    bottoms[i] = buttons[i].getBoundingClientRect().bottom
                 }
                 bottoms.sort(function(a, b){
                     return a - b
