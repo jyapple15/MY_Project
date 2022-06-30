@@ -253,7 +253,7 @@
                     bottoms.sort(function(a, b){
                         return a - b
                     })
-                    div_bottom = div.getBoundingClientRect().bottom + div.scrollTop;
+                    div_bottom = today_activity.getBoundingClientRect().bottom + today_activity.scrollTop;
                     for (let i = bottoms.length - 1; i > -1; i--)
                     {
                         if (bottoms[i] < div_bottom)
