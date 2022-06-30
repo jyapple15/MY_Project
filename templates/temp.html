@@ -602,8 +602,10 @@
                         element.style.height = "15px"
                     }
 
-
                     element_bottom = element.getBoundingClientRect().bottom;
+                    /* if translated out of div */
+                    elements = div.querySelectorAll(type)
+                    pairs = pair_div.querySelectorAll(type)
 
                     tops = []
                     bottoms = []
@@ -636,11 +638,10 @@
                     corner.style.transform = `translateY(${original_transform + element_height - old_height}px)`
                     //TESTING (end)
 
-                    /* if translated out of div */
+                    /* 
                     elements = div.querySelectorAll(type)
                     pairs = pair_div.querySelectorAll(type)
 
-                    /*
                     tops = []
                     bottoms = []
                     for (let i = 0; i < elements.length; i++)
@@ -653,10 +654,8 @@
                     })
                     bottoms.sort(function(a, b){
                         return a - b
-                    }) */
+                    })
 
-                    /*REDO this to resize stop whenever reach another element*/
-                    /*
                     for (let i = 0; i < tops.length; i++)
                     {
                         if (tops[i] > element_top)
