@@ -25,7 +25,7 @@ nav .navbar-brand
 /* Colors for brand */
 nav .navbar-brand .cursive
 {
-    font-family: "Lucida Handwriting", cursive;
+    font-family: "Lucida Handwriting", "Bradley Hand Bold", cursive;
     font-size: 90%;
 }
 
