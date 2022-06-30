@@ -10,7 +10,7 @@
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
         </div>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" oninvalid="requirement()" title="Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit">
         </div>
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
@@ -20,7 +20,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function(){
-            document.addEventListener
+            document.addEventListener("mousedown", function(){
+                document.getElementById("myAnchor").removeAttribute("oninvalid");
+            })
+        })
+
+        function requirement(){
             alert("Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit")
         }
     </script>
