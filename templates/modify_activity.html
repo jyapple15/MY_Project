@@ -38,18 +38,18 @@
         <div class="wrap">
             <table>
                 <tr>
-                    <th width="101px"><label class="float-end pe-1" for="activity">Activity:</label></th>
-                    <td width="240px"><input size="26" class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="activity" name="activity" type="text" value="{{activity["activity"]}}"></td>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="activity">Activity:</label></th>
+                    <td width="240px"><input class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="activity" name="activity" type="text" value="{{activity["activity"]}}"></td>
                 </tr>
             </table>
             <table>
                 <tr>
-                    <th width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
                     <td width="240px">
                         {% if activity["description"] %}
-                            <input size="26" class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{activity["description"]}}">
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{activity["description"]}}">
                             {% else %}
-                            <input size="26" class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
                             {% endif %}
                     </td>
                 </tr>
@@ -58,7 +58,7 @@
         <div class="wrap">
             <table>
                 <tr>
-                    <th width="101px"><label class="float-end pe-1" for="day">Day(s):</label></th>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="day">Day(s):</label></th>
                     <td width="240px" class="float-start mx-auto w-auto">
                         {% for activityday in activity_days %}
                             <div class="activityday visually-hidden">{{activityday}}</div>
@@ -84,7 +84,7 @@
         <div class="wrap">
             <table>
                 <tr>
-                    <th width="101px"><label class="float-end pe-1" for="weektype">Week:</label></th>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="weektype">Week:</label></th>
                     <td class="text-capitalize" width="240px">
                         <input class="float-start mx-auto w-auto" list="weektypes" autocomplete="off" placeholder="(Odd, Even, etc.)" name="weektype" id="weektype" value="{{activity["weektype"]}}">
                         <datalist id="weektypes">
@@ -97,7 +97,7 @@
             </table>
             <table>
                 <tr>
-                    <th width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
                     <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time" value="{{activity["start_time"]}}">-<input class="float-end mx-auto w-auto" autocomplete="off" id="end_time" name="end_time" type="time" value="{{activity["end_time"]}}"></td>
                 </tr>
             </table>

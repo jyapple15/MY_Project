@@ -20,18 +20,18 @@
             <div class="wrap">
                 <table>
                     <tr>
-                        <th width="101px"><label class="float-end pe-1" for="event">Event:</label></th>
-                        <td width="240px"><input size="26" class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="event" name="event" type="text" value="{{event["event"]}}"></td>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="event">Event:</label></th>
+                        <td width="240px"><input class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="event" name="event" type="text" value="{{event["event"]}}"></td>
                     </tr>
                 </table>
                 <table>
                     <tr>
-                        <th width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
                         <td width="240px">
                             {% if event["description"] %}
-                            <input size="26" class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{event["description"]}}">
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{event["description"]}}">
                             {% else %}
-                            <input size="26" class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
                             {% endif %}
                         </td>
                     </tr>
@@ -40,13 +40,13 @@
             <div class="wrap">
                 <table>
                     <tr>
-                        <th width="101px"><label class="float-end pe-1" for="date">Date:</label></th>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="date">Date:</label></th>
                         <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="date" name="date" type="date" value="{{event["date"]}}"></td>
                     </tr>
                 </table>
                 <table>
                     <tr>
-                        <th width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
                         <td width="240px">
                             {% if event["start_time"]%}
                             <input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time" value="{{event["start_time"]}}">
