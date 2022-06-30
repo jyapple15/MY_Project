@@ -4,6 +4,11 @@
     color: black;
 }
 
+input
+{
+    size: 1;
+}
+
 /* effects */
 .low_opacity
 {
@@ -25,7 +30,7 @@ nav .navbar-brand
 /* Colors for brand */
 nav .navbar-brand .cursive
 {
-    font-family: "Lucida Handwriting", "Bradley Hand Bold", cursive;
+    font-family: "Lucida Handwriting", cursive;
     font-size: 90%;
 }
 
