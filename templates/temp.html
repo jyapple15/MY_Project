@@ -263,6 +263,7 @@
                     button_activity.style.transform = `translateY(${Math.trunc(last_button_bottom - buttons[buttons.length - 1].getBoundingClientRect().top)}px)`
                 }
 
+
                 // TESTING
                 corner = document.createElement("img")
                 corner.src = "https://i.imgur.com/4kAurAV.png"
@@ -279,6 +280,7 @@
                 height_addition = parseInt(button_activity.style.height.replace('px)',''))
                 corner.style.transform = `translateY(${to_transform + height_addition - 10}px)`
 
+                
                 /* Create time button*/
                 button_time = document.createElement("button")
 
