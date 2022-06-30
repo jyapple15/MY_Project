@@ -4,19 +4,6 @@
     color: black;
 }
 
-th
-{
-    min-width: 101px;
-}
-tbody
-{
-    width: 100%;
-}
-td
-{
-    width: 100%;
-}
-
 /* effects */
 .low_opacity
 {
