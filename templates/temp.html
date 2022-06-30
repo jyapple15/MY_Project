@@ -594,15 +594,10 @@
 
                     tops = []
                     bottoms = []
-
                     for (let i = 0; i < elements.length; i++)
                     {
-                        if (elements[i].isSameNode(element) === false)
-                        {
-                            tops[j] = elements[i].getBoundingClientRect().top
-                            bottoms[j] = elements[i].getBoundingClientRect().bottom
-                            j = j + 1
-                        }
+                        tops[i] = elements[i].getBoundingClientRect().top
+                        bottoms[i] = elements[i].getBoundingClientRect().bottom
                     }
                     tops.sort(function(a, b){
                         return a - b
@@ -628,6 +623,7 @@
                     elements = div.querySelectorAll(type)
                     pairs = pair_div.querySelectorAll(type)
 
+                    /*
                     tops = []
                     bottoms = []
                     for (let i = 0; i < elements.length; i++)
@@ -640,7 +636,7 @@
                     })
                     bottoms.sort(function(a, b){
                         return a - b
-                    })
+                    }) */
 
                     /*REDO this to resize stop whenever reach another element*/
                     /*
