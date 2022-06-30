@@ -328,9 +328,8 @@
                     document.addEventListener("mouseup", function(e){
                         e.preventDefault()
                         document.removeEventListener("mousemove", restrict)
-                        element.style.resize = "vertical"
                     })
-            }
+                })
 
             /* Make draggable (translate)*/
             function draggable(element, pair, div, pair_div, clicked, type){
