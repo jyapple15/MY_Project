@@ -155,6 +155,7 @@
                 wrapped_E = document.querySelectorAll(".wrap")
                 specify(e)
             })
+
             function specify(e){
                 if (e.target == add)
                 {
@@ -205,11 +206,12 @@
                         }
                     });
                 }
-                else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input))
+                else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
                 {
                     bg_normal()
                 }
             }
+
             function bg_normal(){
                 /* task vs options HIDE */
                 specify_activity.classList.add("visually-hidden")
