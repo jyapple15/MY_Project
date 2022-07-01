@@ -235,7 +235,7 @@
                         else
                         {
                             activity_name = others_input.value
-                            activity_duration = others_h_input.value * 60 + others_m_input.value
+                            activity_duration = parseInt(others_h_input.value * 60) + parseInt(others_m_input.value)
                             add_activity()
                             bg_normal()
                         }
