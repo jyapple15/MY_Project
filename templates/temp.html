@@ -791,7 +791,7 @@
         <b>Task?</b>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
-            <div class="options">{{task.task}}</div>
+            <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
             {% endif %}
         {% endfor %}
         <br><input width="35px" type="number" value="0" id="task_h_input" size="2" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" size="2" min="0" max="59"><span> min</span><br>
@@ -806,6 +806,14 @@
     <script>
         function hours(){
             alert("Min: 0, Max: 23 !")
+        }
+        function highlight(x)
+        {
+            x.style.backgroundColor = "white"
+        }
+        function unhighlight(x)
+        {
+            x.style.backgroundColor = "transparent"
         }
     </script>
 
