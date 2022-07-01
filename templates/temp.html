@@ -144,6 +144,7 @@
             others = document.querySelector("#others_1")
             task_h_input =document.querySelector("#task_h_input")
             task_m_input =document.querySelector("#task_m_input")
+            task_add = document.querySelector("#task_add")
             others_div = document.querySelector("#others_2")
             others_input = document.querySelector("#others_input")
             others_h_input = document.querySelector("#others_h_input")
@@ -768,7 +769,7 @@
             {% endif %}
         {% endfor %}
         <br><input width="35px" type="number" value="0" id="task_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" min="0" max="59"><span> min</span><br>
-        <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
+        <button class="btn btn-primary mt-2 bg2 pastelred" id="task_add">Add</button>
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
