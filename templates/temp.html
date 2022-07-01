@@ -787,7 +787,7 @@
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
         <b>Task?</b>
         <br><br>
-        <input width="35px" type="number" value="0" id="task_h_input"><span> h : </span><input type="number" value="30" id="task_m_input"><span> min</span>
+        <input class="n_resize" type="number" value="0" id="task_h_input"><span> h : </span><input class="n_resize" type="number" value="30" id="task_m_input"><span> min</span>
         <br><br>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
@@ -797,7 +797,7 @@
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
-        <input type="number" value="0" id="others_h_input"><span> h : </span><input type="number" value="30" id="others_m_input"><span> min</span><br>
+        <input class="n_resize" type="number" value="0" id="others_h_input"><span> h : </span><input class="n_resize" type="number" value="30" id="others_m_input"><span> min</span><br>
         <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
     </div>
 

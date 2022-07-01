@@ -27,6 +27,11 @@ th.restrict101
     top: 0;
 }
 
+.n_resize
+{
+    width: 35px;
+}
+
 /* Size for brand */
 nav .navbar-brand
 {
