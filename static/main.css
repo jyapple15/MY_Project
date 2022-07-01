@@ -22,7 +22,9 @@ th.restrict101
 
 .sticky
 {
+    position: -webkit-sticky;
     position: sticky;
+    top: 0;
 }
 
 /* Size for brand */
