@@ -770,7 +770,7 @@
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
         <b>Task?</b>
         <br><br>
-        <input width="35px" type="number" value="0" id="task_h_input" onchange="hours(this)"><span> h : </span><input type="number" value="30" id="task_m_input" onchange="minutes(this)"><span> min</span>
+        <input width="35px" type="number" value="0" size="1" id="task_h_input" onchange="hours(this)"><span> h : </span><input type="number" value="30" size="2" id="task_m_input" onchange="minutes(this)"><span> min</span>
         <br><br>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
