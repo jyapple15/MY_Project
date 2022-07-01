@@ -56,8 +56,15 @@
                 if (checkbox[i].querySelector(".task_status1").innerHTML == "incomplete")
                 {
                     tick.style.opacity = "0"
+                    tick.addEventListener("mouseenter", function(){
+                        tick.style.classList.add("low_opacity")
+                        tick.addEventListener("mouseleave", function(){
+                            tick.style.classList.remove("low_opacity")
+                        })
+                    })
                 }
                 checkbox[i].addEventListener("click", function(){
+                    tick = checkbox[i].querySelector("img")
                     if (checkbox[i].querySelector(".task_status1").innerHTML == "incomplete")
                     {
                         tick.style.opacity = "1"
