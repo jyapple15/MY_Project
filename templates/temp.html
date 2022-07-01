@@ -56,10 +56,10 @@
                 if (checkbox[i].querySelector(".task_status1").innerHTML == "incomplete")
                 {
                     tick.style.opacity = "0"
-                    tick.addEventListener("mouseenter", function(){
+                    checkbox[i].addEventListener("mouseenter", function(){
                         tick = checkbox[i].querySelector("img")
                         tick.classList.add("low_opacity")
-                        tick.addEventListener("mouseleave", function(){
+                        checkbox[i].addEventListener("mouseleave", function(){
                             tick.classList.remove("low_opacity")
                         })
                     })
