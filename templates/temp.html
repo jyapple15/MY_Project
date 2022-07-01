@@ -785,10 +785,10 @@
         <button class="bg2 pastelred black_text" id="others_1">Others</button>
     </div>
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
-        <b class="mb-2">Task?</b>
-        <br>
-        <input class="n_resize" type="number" value="0" id="task_h_input"><span> h : </span><input class="n_resize" type="number" value="30" id="task_m_input"><span> min</span>
-        <br class="mt-2">
+        <b>Task?</b><br>
+        <div class="mt-2 mb-2">
+            <input class="n_resize" type="number" value="0" id="task_h_input"><span> h : </span><input class="n_resize" type="number" value="30" id="task_m_input"><span> min</span>
+        </div><br>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
             <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
