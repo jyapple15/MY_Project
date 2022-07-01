@@ -763,7 +763,7 @@
             <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
             {% endif %}
         {% endfor %}
-        <br><input placeholder="Duration (minutes)" type="number" value="30" id="task_d_input">
+        <br><input type="number" value="0" id="task_h_input" min="0" max="23">h :<input type="number" value="30" id="task_m_input" min="0" max="59">min
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
