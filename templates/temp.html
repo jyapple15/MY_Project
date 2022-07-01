@@ -183,36 +183,12 @@
                     {
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", function(){
-                            if (options[i].style.backgroundColor == "white")
-                            {
-                                options[i].style.backgroundColor = "transparent"
-                                selected = undefined
-                            }
-                            else
-                            {
-                                options[i].style.backgroundColor = "white"
-                                options = task_options.querySelectorAll(".options")
-                                for (let j = 0; j < options.length; j++)
-                                {
-                                    if (j != i)
-                                    {
-                                        options[j].style.backgroundColor = "transparent"
-                                    }
-                                }
-                                selected = options[i].innerHTML
-                            }
-                        })
-                    }
-
-                    /* Click add */
-                    task_add.addEventListener("click", function(){
-                        if (typeof(selected) != "undefined")
-                        {
-                            activity_name = selected
+                            activity_name = options[i].innerHTML
+                            activity_duration =
                             add_activity()
                             bg_normal()
-                        }
-                    })
+                        }, {once : true})
+                    }
                 }
                 else if (e.target == others)
                 {
@@ -227,12 +203,13 @@
                         if (others_input.value != "")
                         {
                             activity_name = others_input.value
+                            activity_duration =
                             add_activity()
                             bg_normal()
                         }
                     });
                 }
-                else if (!options.includes(e.target) && e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
+                else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
                 {
                     bg_normal()
                 }
@@ -789,17 +766,16 @@
     </div>
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
         <b>Task?</b>
+        <br><input width="35px" type="number" value="0" id="task_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" min="0" max="59"><span> min</span><br>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
             <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
             {% endif %}
         {% endfor %}
-        <br><input width="35px" type="number" value="0" id="task_h_input" size="2" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" size="2" min="0" max="59"><span> min</span><br>
-        <button class="btn btn-primary mt-2 bg2 pastelred" id="task_add">Add</button>
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
-        <input type="number" value="0" id="others_h_input" oninvalid="hours()" size="2" min="0" max="23"><span> h : </span><input type="number" value="30" id="others_m_input" size="2" min="0" max="59"><span> min</span><br>
+        <input type="number" value="0" id="others_h_input" oninvalid="hours()" min="0" max="23"><span> h : </span><input type="number" value="30" id="others_m_input" min="0" max="59"><span> min</span><br>
         <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
     </div>
 
