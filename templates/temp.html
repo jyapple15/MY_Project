@@ -57,9 +57,9 @@
                 {
                     tick.style.opacity = "0"
                     tick.addEventListener("mouseenter", function(){
-                        tick.style.classList.add("low_opacity")
+                        tick.classList.add("low_opacity")
                         tick.addEventListener("mouseleave", function(){
-                            tick.style.classList.remove("low_opacity")
+                            tick.classList.remove("low_opacity")
                         })
                     })
                 }
@@ -67,6 +67,7 @@
                     tick = checkbox[i].querySelector("img")
                     if (checkbox[i].querySelector(".task_status1").innerHTML == "incomplete")
                     {
+                        tick.classList.remove("low_opacity")
                         tick.style.opacity = "1"
                         document.querySelector("#u_status").value = "completed"
                     }
