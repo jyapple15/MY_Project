@@ -185,12 +185,20 @@
                         options[i].addEventListener("click", function(){
                             if (x.style.backgroundColor == "white")
                             {
-                                x.style.backgroundColor = "transparent"
+                                options[i].style.backgroundColor = "transparent"
+                                selected === undefined
                             }
                             else
                             {
-                                x.style.backgroundColor = "white"
-                                document.querySelectorAll(".options")
+                                options[i].style.backgroundColor = "white"
+                                options = task_options.querySelectorAll(".options")
+                                for (let j = 0; j < options.length; j++)
+                                {
+                                    if (j != i)
+                                    {
+                                        options[j].style.backgroundColor = "transparent"
+                                    }
+                                }
                                 selected = options[i]
                             }
                     }
