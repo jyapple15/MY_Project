@@ -31,7 +31,14 @@
 
         {% if session["color"] %}
         <link class="general_colors" id="{{session["color"]}}" href="/static/{{session["color"]}}.css" rel="stylesheet">
-        
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                color = document.querySelector(.general_colors).id
+                localStorage.setItem("general_color", color)
+            })
+        </script>
+
         {% else %}
         <link class="general_colors" id="red" href="/static/red.css" rel="stylesheet" disabled>
         <link class="general_colors" id="orange" href="/static/orange.css" rel="stylesheet" disabled>
