@@ -179,7 +179,7 @@
             </tr>
             <tr>
                 <th></th>
-                <td><input class="form-control mx-auto w-auto" id="new_password" name="new_password" placeholder="New Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit"></td>
+                <td><input class="form-control mx-auto w-auto" id="new_password" name="new_password" placeholder="New Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" oninvalid="requirement()" title="Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit"></td>
             </tr>
             <tr>
                 <th></th>
@@ -188,4 +188,10 @@
         </table>
         <button class="btn btn-primary bg pastelred mb-5" type="submit">Save</button>
     </form>
+
+    <script>
+        function requirement(){
+            alert("Minimum of 8 characters including at least one uppercase letter, one lowercase letter, one symbol, and a digit")
+        }
+    </script>
 {% endblock %}
