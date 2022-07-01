@@ -192,14 +192,14 @@
                             {
                                 alert("Only 0-23h and 0-59min :/")
                             }
-                            else if ((task_h_input.value * 60 + task_m_input.value) < 15)
+                            else if ((parseInt(task_h_input.value * 60) + parseInt(task_m_input.value)) < 15)
                             {
                                 alert("At least 15min")
                             }
                             else
                             {
                                 activity_name = options[i].innerHTML
-                                activity_duration = task_h_input.value * 60 + task_m_input.value
+                                activity_duration = parseInt(task_h_input.value * 60) + parseInt(task_m_input.value)
                                 add_activity()
                                 bg_normal()
                             }
@@ -224,7 +224,7 @@
                         {
                             alert("Only 0-23h and 0-59min :/")
                         }
-                        else if ((others_h_input.value * 60 + others_m_input.value) < 15)
+                        else if ((parseInt(others_h_input.value * 60) + parseInt(others_m_input.value)) < 15)
                         {
                             alert("At least 15min")
                         }
