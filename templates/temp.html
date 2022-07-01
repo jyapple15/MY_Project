@@ -183,10 +183,16 @@
                     {
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", function(){
-                            activity_name = options[i].innerHTML
-                            add_activity()
-                            bg_normal()
-                        }, {once : true})
+                            if (x.style.backgroundColor == "white")
+                            {
+                                x.style.backgroundColor = "transparent"
+                            }
+                            else
+                            {
+                                x.style.backgroundColor = "white"
+                                document.querySelectorAll()
+                                selected = options[i]
+                            }
                     }
                 }
                 else if (e.target == others)
@@ -776,19 +782,7 @@
         <input type="number" value="0" id="others_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="others_m_input" min="0" max="59"><span> min</span><br>
         <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
     </div>
-    <script>
-        function highlight(x)
-        {
-            if (x.style.backgroundColor == "white")
-            {
-                x.style.backgroundColor = "transparent"
-            }
-            else
-            {
-                x.style.backgroundColor = "white"
-            }
-        }
-    </script>
+
     <div class="wrap">
         <!--Timetable-->
         <div class="sub_wrap">
