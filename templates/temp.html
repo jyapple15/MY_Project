@@ -182,13 +182,7 @@
                     for (let i = 0; i < options.length; i++)
                     {
                         options[i].style.cursor = "pointer";
-                        task_add.addEventListener("click", function(){
-                            if (others_input.value != "")
-                        {
-                            activity_name = others_input.value
-                            add_activity()
-                            bg_normal()
-                        }
+                        options[i].addEventListener("click", function(){
                             activity_name = options[i].innerHTML
                             add_activity()
                             bg_normal()
@@ -771,7 +765,7 @@
         <b>Task?</b>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
-            <div class="options" onclick="highlight(this)">{{task.task}}</div>
+            <div class="options">{{task.task}}</div>
             {% endif %}
         {% endfor %}
         <br><input width="35px" type="number" value="0" id="task_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" min="0" max="59"><span> min</span><br>
