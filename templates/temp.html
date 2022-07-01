@@ -183,7 +183,7 @@
                     {
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", function(){
-                            if (task_h_input.value && task_m_input.value)
+                            if (task_h_input.value && task_m_input.value && (task_h_input.value < 0 || task_h_input.value > 23 || task_m_input.value < 0 || task_m_input.value > 59)
                             {
                                 activity_name = options[i].innerHTML
                                 activity_duration = task_h_input.value * 60 + task_m_input.value
