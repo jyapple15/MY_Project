@@ -184,7 +184,15 @@
                     {
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", function(){
-                            if (task_h_input.value && task_m_input.value && (task_h_input.value < 0 || task_h_input.value > 23 || task_m_input.value < 0 || task_m_input.value > 59))
+                            if (!task_h_input.value || !task_m_input.value)
+                            {
+                                alert("Please input hours & minutes!")
+                            }
+                            else if (task_h_input.value < 0 || task_h_input.value > 23 || task_m_input.value < 0 || task_m_input.value > 59)
+                            {
+                                alert("Only 0-23h and 0-59min :/")
+                            }
+                            else if
                             {
                                 activity_name = options[i].innerHTML
                                 activity_duration = task_h_input.value * 60 + task_m_input.value
@@ -204,7 +212,15 @@
 
                     /* after value input */
                     others_add.addEventListener("click", function(){
-                        if (others_input.value != "" && others_h_input.value && others_m_input.value)
+                        if (!others_h_input.value || !others_m_input.value)
+                        {
+                            alert("Please input hours & minutes!")
+                        }
+                        else if (others_h_input.value < 0 || others_h_input.value > 23 || others_m_input.value < 0 || others_m_input.value > 59)
+                        {
+                            alert("Only 0-23h and 0-59min :/")
+                        }
+                        else if (others_input.value != "")
                         {
                             activity_name = others_input.value
                             activity_duration = others_h_input.value * 60 + others_m_input.value
@@ -771,7 +787,7 @@
     <div id="task_options2" class="bg2 pastelred fixedP visually-hidden">
         <b>Task?</b>
         <br><br>
-        <input width="35px" type="number" value="0" size="1" id="task_h_input" onchange="hours(this)"><span> h : </span><input type="number" value="30" size="2" id="task_m_input" onchange="minutes(this)"><span> min</span>
+        <input width="35px" type="number" value="0" id="task_h_input"><span> h : </span><input type="number" value="30" id="task_m_input"><span> min</span>
         <br><br>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
@@ -781,23 +797,11 @@
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
-        <input type="number" value="0" id="others_h_input" onchange="hours(this)"><span> h : </span><input type="number" value="30" id="others_m_input" onchange="minutes(this)"><span> min</span><br>
+        <input type="number" value="0" id="others_h_input"><span> h : </span><input type="number" value="30" id="others_m_input"><span> min</span><br>
         <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
     </div>
 
     <script>
-        function hours(x){
-            if (x.value < 0 || x.value > 23)
-            {
-                alert("Min: 0, Max: 23 !")
-            }
-        }
-        function minutes(x){
-            if (x.value < 0 || x.value > 59)
-            {
-                alert("Min: 0, Max: 59 !")
-            }
-        }
         function highlight(x)
         {
             x.style.backgroundColor = "white"
