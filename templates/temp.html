@@ -762,10 +762,11 @@
         <b>Task?</b>
         {% for task in tasks %}
             {% if task.status == "incomplete" %}
-            <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
+            <div class="options" onclick="highlight(this)">{{task.task}}</div>
             {% endif %}
         {% endfor %}
-        <br><input width="" type="number" value="0" id="task_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" min="0" max="59">min
+        <br><input width="" type="number" value="0" id="task_h_input" min="0" max="23"><span> h : </span><input type="number" value="30" id="task_m_input" min="0" max="59"><span> min</span>
+        <button class="btn btn-primary mt-2 bg pastelred" id="others_add">Add</button>
     </div>
     <div class="fixedP visually-hidden" id="others_2">
         <input id="others_input" type="text"><br>
@@ -775,11 +776,14 @@
     <script>
         function highlight(x)
         {
-            x.style.backgroundColor = "white"
-        }
-        function unhighlight(x)
-        {
-            x.style.backgroundColor = "transparent"
+            if (x.style.backgroundColor == "white")
+            {
+                x.style.backgroundColor = "transparent"
+            }
+            else
+            {
+                x.style.backgroundColor = "white"
+            }
         }
     </script>
     <div class="wrap">
