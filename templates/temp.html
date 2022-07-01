@@ -199,16 +199,16 @@
                                         options[j].style.backgroundColor = "transparent"
                                     }
                                 }
-                                selected = options[i]
+                                selected = options[i].innerHTML
                             }
                         })
                     }
 
                     /* Click add */
                     task_add.addEventListener("click", function(){
-                        if (typeof(selected) != "")
+                        if (typeof(selected) != "undefined")
                         {
-                            activity_name = others_input.value
+                            activity_name = selected
                             add_activity()
                             bg_normal()
                         }
