@@ -182,7 +182,13 @@
                     for (let i = 0; i < options.length; i++)
                     {
                         options[i].style.cursor = "pointer";
-                        options[i].addEventListener("click", function(){
+                        task_add.addEventListener("click", function(){
+                            if (others_input.value != "")
+                        {
+                            activity_name = others_input.value
+                            add_activity()
+                            bg_normal()
+                        }
                             activity_name = options[i].innerHTML
                             add_activity()
                             bg_normal()
