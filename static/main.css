@@ -20,6 +20,11 @@ th.restrict101
     opacity: 0.1;
 }
 
+.sticky
+{
+    position: sticky;
+}
+
 /* Size for brand */
 nav .navbar-brand
 {
