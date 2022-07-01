@@ -186,7 +186,7 @@
                             if (x.style.backgroundColor == "white")
                             {
                                 options[i].style.backgroundColor = "transparent"
-                                selected === undefined
+                                selected = undefined
                             }
                             else
                             {
@@ -201,7 +201,18 @@
                                 }
                                 selected = options[i]
                             }
+                        })
                     }
+
+                    /* Click add */
+                    task_add.addEventListener("click", function(){
+                        if (typeof(selected) != "")
+                        {
+                            activity_name = others_input.value
+                            add_activity()
+                            bg_normal()
+                        }
+                    })
                 }
                 else if (e.target == others)
                 {
