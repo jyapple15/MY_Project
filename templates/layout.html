@@ -34,9 +34,9 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function(){
-                if (localStorage.general_color)
+                color = document.querySelector(.general_colors).id
+                if (localStorage.general_color === undefined || localStorage.general_color != color)
                 {
-                    color = document.querySelector(.general_colors).id
                     localStorage.setItem("general_color", color)
                 }
             })
