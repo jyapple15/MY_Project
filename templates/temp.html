@@ -185,7 +185,7 @@
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", function(){
                             add_task(i)
-                            bg_normal
+                            bg_normal()
                         })
                     }
                 }
@@ -199,8 +199,8 @@
 
                     /* after value input */
                     others_add.addEventListener("click", function(){
-                        add_others
-                        bg_normal
+                        add_others()
+                        bg_normal()
                     });
                 }
                 else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
@@ -230,15 +230,15 @@
 
                 /* remove all add events */
                 others_add.removeEventListener("click", function(){
-                    add_others
-                    bg_normal
+                    add_others()
+                    bg_normal()
                 })
 
                 for (let i = 0; i < options.length; i++)
                 {
                     options[i].removeEventListener("click", function(){
                         add_task(i)
-                        bg_normal
+                        bg_normal()
                     })
                 }
             }
