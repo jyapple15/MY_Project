@@ -182,6 +182,7 @@
                     /* click on option */
                     for (let i = 0; i < options.length; i++)
                     {
+                        options[i].removeEventListener("click", task_add)
                         options[i].style.cursor = "pointer";
                         options[i].addEventListener("click", task_add)
 
@@ -205,8 +206,6 @@
                                 add_activity()
                                 bg_normal()
                             }
-                            for ()
-                            options[i].removeEventListener("click", task_add)
                         }
                     }
                 }
