@@ -196,7 +196,7 @@
                     /* after value input */
                     others_add.addEventListener("click", add_others);
                 }
-                else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
+                else if (e.target != others_input && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
                 {
                     bg_normal()
                 }
@@ -249,7 +249,6 @@
                     activity_duration = parseInt(task_h_input.value * 60) + parseInt(task_m_input.value)
                     add_activity()
                 }
-                bg_normal()
             }
 
             function add_others(){
@@ -275,7 +274,6 @@
                     activity_duration = parseInt(others_h_input.value * 60) + parseInt(others_m_input.value)
                     add_activity()
                 }
-                bg_normal()
             }
 
             /*Add button*/
