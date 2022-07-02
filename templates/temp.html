@@ -183,7 +183,10 @@
                     for (let i = 0; i < options.length; i++)
                     {
                         options[i].style.cursor = "pointer";
-                        options[i].addEventListener("click", add_task(i))
+                        options[i].addEventListener("click", function(){
+                            add_task(i)
+                            bg_normal
+                        })
                     }
                 }
                 else if (e.target == others)
@@ -195,7 +198,10 @@
                     specify_activity.classList.add("visually-hidden")
 
                     /* after value input */
-                    others_add.addEventListener("click", add_others);
+                    others_add.addEventListener("click", function(){
+                        add_others
+                        bg_normal
+                    });
                 }
                 else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
                 {
@@ -223,11 +229,17 @@
                 others_input.value = ""
 
                 /* remove all add events */
-                others_add.removeEventListener("click", add_others)
+                others_add.removeEventListener("click", function(){
+                    add_others
+                    bg_normal
+                })
 
                 for (let i = 0; i < options.length; i++)
                 {
-                    options[i].removeEventListener("click", add_task(i))
+                    options[i].removeEventListener("click", function(){
+                        add_task(i)
+                        bg_normal
+                    })
                 }
             }
 
