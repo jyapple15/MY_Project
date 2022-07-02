@@ -143,8 +143,8 @@
             specify_activity = document.querySelector("#specify_activity")
             tasks = document.querySelector("#task_options1")
             others = document.querySelector("#others_1")
-            task_h_input =document.querySelector("#task_h_input")
-            task_m_input =document.querySelector("#task_m_input")
+            task_h_input = document.querySelector("#task_h_input")
+            task_m_input = document.querySelector("#task_m_input")
             others_div = document.querySelector("#others_2")
             others_input = document.querySelector("#others_input")
             others_h_input = document.querySelector("#others_h_input")
@@ -220,7 +220,10 @@
                 /* set activity name */
                 activity_name = ""
                 activity_duration = ""
-                
+                task_h_input.value = 0
+                task_m_input.value = 30
+                others_h_input.value = 0
+                others_m_input.value = 30
                 others_input.value = ""
 
                 /* remove all add events */
@@ -283,7 +286,7 @@
             today_activity = document.querySelector("#today_activity")
             function add_activity(){
                 /* check for activity_name */
-                if (activity_name == "")
+                if (activity_name == "" || activity_duration == "")
                 {
                     return
                 }
