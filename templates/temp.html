@@ -235,7 +235,7 @@
                 }
             }
 
-            function add_task(){
+            function add_task(e){
                 if (!task_h_input.value || !task_m_input.value)
                 {
                     alert("Please input hours & minutes!")
@@ -250,7 +250,7 @@
                 }
                 else
                 {
-                    activity_name = options[i].innerHTML
+                    activity_name = e.target.innerHTML
                     activity_duration = parseInt(task_h_input.value * 60) + parseInt(task_m_input.value)
                     add_activity()
                 }
