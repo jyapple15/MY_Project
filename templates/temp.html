@@ -182,11 +182,8 @@
                     /* click on option */
                     for (let i = 0; i < options.length; i++)
                     {
-                        options[i].removeEventListener("click", task_add)
                         options[i].style.cursor = "pointer";
-                        options[i].addEventListener("click", task_add)
-
-                        function task_add(){
+                        options[i].addEventListener("click", function(){
                             if (!task_h_input.value || !task_m_input.value)
                             {
                                 alert("Please input hours & minutes!")
@@ -206,7 +203,7 @@
                                 add_activity()
                                 bg_normal()
                             }
-                        }
+                        }, {once : true})
                     }
                 }
                 else if (e.target == others)
@@ -218,10 +215,7 @@
                     specify_activity.classList.add("visually-hidden")
 
                     /* after value input */
-                    others_add.addEventListener("click", others_add)
-                    others_add.removeEventListener("click", others_add)
-
-                    function others_add(){
+                    others_add.addEventListener("click", function(){
                         if (!others_h_input.value || !others_m_input.value)
                         {
                             alert("Please input hours & minutes!")
@@ -245,7 +239,7 @@
                             add_activity()
                             bg_normal()
                         }
-                    };
+                    }, {once : true});
                 }
                 else if (e.target != others_input && e.target != others_add && e.target != others_h_input && e.target != others_m_input && e.target != task_h_input && e.target != task_m_input)
                 {
