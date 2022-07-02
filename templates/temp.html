@@ -182,7 +182,7 @@
                     for (let i = 0; i < options.length; i++)
                     {
                         options[i].style.cursor = "pointer";
-                        options[i].addEventListener("click", add_task(i))
+                        options[i].addEventListener("click", add_task)
                     }
                 }
                 else if (e.target == others)
@@ -231,11 +231,11 @@
 
                 for (let i = 0; i < options.length; i++)
                 {
-                    options[i].removeEventListener("click", add_task(i))
+                    options[i].removeEventListener("click", add_task)
                 }
             }
 
-            function add_task(i){
+            function add_task(){
                 if (!task_h_input.value || !task_m_input.value)
                 {
                     alert("Please input hours & minutes!")
