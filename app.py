@@ -220,7 +220,7 @@ def modified_task():
                 if request.form.get("description"):
                     db.execute("UPDATE tasks SET description = ? WHERE task_id = ?", request.form.get("description"), newT)
                 else:
-                    db.execute("UPDATE tasks SET description = NULL WHERE event_id = ?", newT)
+                    db.execute("UPDATE tasks SET description = NULL WHERE task_id = ?", newT)
     return redirect("/")
 
 
