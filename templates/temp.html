@@ -904,14 +904,34 @@
             </form>
             <table>
                 <tr height="17px"></tr>
-                {% if incomplete_tasks ||  %}
+                {% if incomplete_tasks or complete_tasks %}
                 <!--checklist-->
                 <tr class="bg2 pastelred">
                     <th></th>
                     <th class="text-start" width="250px">Tasks</th>
                     <th width="110px">Due Date :(</th>
                 </tr>
-                {% for task in tasks %}
+                {% for task in incomplete_tasks %}
+                <tr>
+                    <td class="px-3 pt-1">
+                        <button class="checkbox bg2 pastelred">
+                            <div class="task_status1 visually-hidden">{{task.status}}</div>
+                            <img class="checktick" src="https://www.freeiconspng.com/thumbs/check-tick-icon/black-tick-icon-png-33.png">
+                            <div class="task_id1 visually-hidden">{{task.task_id}}</div>
+                        </button>
+                    </td>
+                    <td class="text-capitalize text-start">
+                        <div class="tasks">{{task.task}}
+                            <div class="visually-hidden">{{task.task_id}}</div>
+                        </div>
+                        {% if task.description %}
+                            <div class="description">{{task.description}}</div>
+                        {% endif %}
+                    </td>
+                    <td>{{task.due_date|date}}</td>
+                </tr>
+                {% endfor %}
+                {% for task in complete_tasks %}
                 <tr>
                     <td class="px-3 pt-1">
                         <button class="checkbox bg2 pastelred">
