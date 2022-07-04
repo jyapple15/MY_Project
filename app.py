@@ -111,7 +111,7 @@ def temp():
     temp = db.execute("SELECT * FROM temp WHERE user_id = ? AND date = ? ORDER BY start_time, end_time", session["user_id"], date)
     if temp:
         fixed = []
-    incomplete_tasks = db.execute("SELECT * FROM tasks WHERE status = 'incomplete' AND user_id = ? ORDER BY due_date", date, session["user_id"])
+    incomplete_tasks = db.execute("SELECT * FROM tasks WHERE status = 'incomplete' AND user_id = ? ORDER BY due_date", session["user_id"])
     complete_tasks = db.execute("SELECT * FROM tasks WHERE (status = 'completed' AND due_date > ?) AND user_id = ? ORDER BY due_date", date, session["user_id"])
     events = db.execute("SELECT event, description, start_time, end_time, event_id FROM events WHERE date = ? AND user_id = ? ORDER BY start_time, end_time", date, session["user_id"])
     return render_template("temp.html", temp=temp, weektypes=weektypes, events=events, incomplete_tasks=incomplete_tasks, complete_tasks=complete_tasks, fixed=fixed, chosen_weektype=chosen_weektype, date=date)
