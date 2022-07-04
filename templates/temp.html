@@ -815,10 +815,8 @@
         <div class="mt-2 mb-2">
             <input class="n_resize" type="number" value="0" id="task_h_input"><span> h : </span><input class="n_resize" type="number" value="30" id="task_m_input"><span> min</span>
         </div>
-        {% for task in tasks %}
-            {% if task.status == "incomplete" %}
+        {% for task in incomplete_tasks %}
             <div class="options" onmouseover="highlight(this)" onmouseout="unhighlight(this)">{{task.task}}</div>
-            {% endif %}
         {% endfor %}
     </div>
     <div class="fixedP visually-hidden" id="others_2">
@@ -906,7 +904,7 @@
             </form>
             <table>
                 <tr height="17px"></tr>
-                {% if tasks %}
+                {% if incomplete_tasks ||  %}
                 <!--checklist-->
                 <tr class="bg2 pastelred">
                     <th></th>
