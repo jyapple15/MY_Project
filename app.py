@@ -343,7 +343,7 @@ def calendar():
     month = datetime.datetime(calendar_year, calendar_month + 1, 1).strftime("%B")
     start_of_month = datetime.datetime(calendar_year, calendar_month + 1, 1).strftime("%Y-%m-%d")
     end_of_month = datetime.datetime(calendar_year, calendar_month + 1, days).strftime("%Y-%m-%d")
-    Month_events = db.execute("SELECT event, description, date, start_time, end_time, event_id FROM events WHERE date <= ? AND date >= ? AND user_id = ? ORDER BY date, start_time, end_time, da", end_of_month, start_of_month, session["user_id"])
+    Month_events = db.execute("SELECT event, description, date, start_time, end_time, event_id FROM events WHERE date <= ? AND date >= ? AND user_id = ? ORDER BY date, start_time, end_time, event_id", end_of_month, start_of_month, session["user_id"])
     return render_template("calendar.html", events=Month_events, month=month, calendar_month=calendar_month, calendar_year=calendar_year, days=days)
 
 
