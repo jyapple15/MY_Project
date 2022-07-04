@@ -93,6 +93,10 @@ def temp():
     else:
         day = Nday
         date = Ndate
+
+        # Clear past unnecessary data from before today
+        db.execute("DELETE FROM temp WHERE user_id = ? AND date < ?", session["user_id"], date)
+
         possible_week_id = db.execute("SELECT week_id FROM date WHERE date = ? AND user_id = ?", date, session["user_id"])
         if not possible_week_id:
             chosen = db.execute("SELECT week_id FROM weektypes WHERE status = 'chosen' AND user_id = ?", session["user_id"])
