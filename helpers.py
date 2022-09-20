@@ -73,4 +73,5 @@ def overdue(value):
     year = int(value[0] + value[1] + value[2] + value[3])
     month = int(value[5] + value[6])
     day = int(value[8] + value[9])
-    return datetime.datetime(year, month, day).strftime("%d %B %Y")
+    if datetime.datetime(year, month, day) < 
+    return true
