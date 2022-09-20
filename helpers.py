@@ -69,9 +69,9 @@ def tominutes(value):
     return (int(value[0] + value[1]) * 60 + int(value[3] + value[4]))
 
 def overdue(value):
-    value = str(value)
-    year = int(value[0] + value[1] + value[2] + value[3])
-    month = int(value[5] + value[6])
-    day = int(value[8] + value[9])
-    if datetime.datetime(year, month, day) < datetime.datetime.now()
-    return true
+    timestamp = datetime.datetime.now()
+    Ndate = timestamp.strftime("%Y-%m-%d")
+    if value < Ndate:
+        return true
+    else:
+        return false
