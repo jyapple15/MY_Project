@@ -72,6 +72,6 @@ def overdue(value):
     timestamp = datetime.datetime.now()
     Ndate = timestamp.strftime("%Y-%m-%d")
     if value < Ndate:
-        return true
+        return True
     else:
-        return false
+        return False
