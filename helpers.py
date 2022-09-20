@@ -71,7 +71,7 @@ def tominutes(value):
 def overdue(value):
     timestamp = datetime.datetime.now()
     Ndate = timestamp.strftime("%Y-%m-%d")
-    if value < Ndate:
+    if  < Ndate:
         return True
     else:
         return False
