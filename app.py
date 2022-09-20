@@ -7,7 +7,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month
+from helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
 
 # Configure application
 app = Flask(__name__)
@@ -20,6 +20,7 @@ app.jinja_env.filters["tominutes"] = tominutes
 app.jinja_env.filters["time12h"] = time12h
 app.jinja_env.filters["time24h"] = time24h
 app.jinja_env.filters["date"] = date
+app.jinja_env.filters["overdue"] = overdue
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False

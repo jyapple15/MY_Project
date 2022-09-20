@@ -67,3 +67,7 @@ def time24h(value):
 def tominutes(value):
     value = str(value)
     return (int(value[0] + value[1]) * 60 + int(value[3] + value[4]))
+
+def overdue(value):
+    value = str(value)
+    return (int(value[0] + value[1]) * 60 + int(value[3] + value[4]))
