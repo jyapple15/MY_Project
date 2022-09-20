@@ -922,6 +922,7 @@
                     </td>
                     <td class="text-capitalize text-start">
                         <div class="tasks">{{task.task}}
+                            {% if task.due_date > %}
                             <div class="visually-hidden">{{task.task_id}}</div>
                         </div>
                         {% if task.description %}
