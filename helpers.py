@@ -70,4 +70,7 @@ def tominutes(value):
 
 def overdue(value):
     value = str(value)
-    return (int(value[0] + value[1]) * 60 + int(value[3] + value[4]))
+    year = int(value[0] + value[1] + value[2] + value[3])
+    month = int(value[5] + value[6])
+    day = int(value[8] + value[9])
+    return datetime.datetime(year, month, day).strftime("%d %B %Y")
