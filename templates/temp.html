@@ -922,7 +922,7 @@
                     </td>
                     <td class="text-capitalize text-start">
                         <div class="tasks">{{task.task}}
-                            {% if task.due_date < time.now.date() %}
+                            {% if task.due_date < {{time.now.date()}} %}
                             <span color="red">!!</span>
                             {% endif %}
                             <div class="visually-hidden">{{task.task_id}}</div>
