@@ -1,3 +1,0 @@
-[submodule "awslambda-psycopg2"]
-	path = awslambda-psycopg2
-	url = https://github.com/jkehler/awslambda-psycopg2.git
