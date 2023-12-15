@@ -2,6 +2,5 @@ cs50
 Flask
 Flask-Session
 gunicorn
-psycopg2==2.9.5
-psycopg2-binary~=2.9.6
+psycopg2
 requests
