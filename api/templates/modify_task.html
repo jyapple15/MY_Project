@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Modify task
+{% endblock %}
+
+{% block main %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector("#delete").addEventListener("click", function(){
+                document.querySelector("#Q_delete").value = "yes"
+                document.querySelector("#modified_task").submit()
+            })
+        })
+    </script>
+    <form id="modified_task" action="/modified_task" method="post">
+        <div><input id="Q_delete" name="Q_delete" class="visually-hidden" value="no"></div>
+        <div><input id="task_id" name="task_id" class="visually-hidden" value="{{task["task_id"]}}"></div>
+        <div style="width: 450px;" class="bord pastelred mb-2 ms-auto me-auto pb-2">
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="task">Task:</label></th>
+                    <td width="240px"><input  class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="task" name="task" type="text" value="{{task["task"]}}"></td>
+                </tr>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                    <td width="240px">
+                        {% if task["description"] %}
+                        <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{task["description"]}}">
+                        {% else %}
+                        <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="due_date">Due Date:</label></th>
+                    <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="due_date" name="due_date" type="date" value="{{task["due_date"]}}"></td>
+                </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary bg pastelred mb-5 mx-2" type="submit">Update</button>
+        <button class="btn btn-primary bg pastelred mb-5 mx-2" id="delete">Delete</button>
+    </form>
+{% endblock %}

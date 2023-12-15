@@ -1,0 +1,363 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Weekly Schedule (fixed)
+{% endblock %}
+
+{% block main %}
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        document.querySelector("#delete").addEventListener("click", function(){
+            document.querySelector("#Q_delete").value = "yes"
+            document.querySelector("#confirmfixed").submit()
+        })
+
+        /* when button clicked, hidden input value = that button value, submit */
+        let weekbuttons = document.querySelectorAll('.dropdown-item')
+        let week_ids = document.querySelectorAll('.week_id')
+        let weektype_status = document.querySelectorAll('.weektype_status')
+        let weektype_names = document.querySelectorAll('.weektype_name')
+        let weektype_schedules = document.querySelectorAll('.weektype_schedule')
+
+        document.querySelector("#delete").classList.add("visually-hidden")
+        document.querySelector("#None_title").classList.remove("visually-hidden")
+
+        for (let i = 0; i < weekbuttons.length; i++) {
+            if(i > 0)
+            {
+                if (weektype_status[i - 1].innerHTML == "chosen")
+                {
+                    generate_weektype(i - 1);
+                    document.querySelector('#chosen').value = week_ids[i].innerHTML;
+                }
+            }
+
+            weekbuttons[i].style.cursor = "pointer";
+            weekbuttons[i].addEventListener('click', function(){
+                document.querySelector('#chosen').value = week_ids[i].innerHTML;
+                for (let j = 0; j < weektype_status.length; j++)
+                {
+                    weektype_names[j].classList.add("visually-hidden");
+                    weektype_schedules[j].classList.add("visually-hidden");
+                }
+                if (i == 0)
+                {
+                    document.querySelector("#delete").classList.add("visually-hidden")
+                    document.querySelector("#None_title").classList.remove("visually-hidden")
+                }
+                else
+                {
+                    generate_weektype(i - 1);
+                }
+            })
+        }
+        let activities = document.querySelectorAll('.activity');
+        for (let i = 0; i < activities.length; i++) {
+            activities[i].style.cursor = "pointer";
+            activities[i].addEventListener('click', function(){
+                document.querySelector('#tomodify').value = activities[i].querySelector('.visually-hidden').innerHTML;
+                document.getElementById("modify_activity").submit();
+            });
+        }
+        function generate_weektype(i) {
+            document.querySelector("#delete").classList.remove("visually-hidden")
+            document.querySelector("#None_title").classList.add("visually-hidden")
+
+            weektype_names[i].classList.remove("visually-hidden");
+            weektype_schedules[i].classList.remove("visually-hidden");
+            let time = weektype_schedules[i].querySelectorAll('.time');
+            let length = 0
+            for (let j = time.length - 1; j >= 0; j--)
+            {
+                timeslot = time[j].querySelector('div').innerHTML
+                if (timeslot <= (weektype_schedules[i].querySelector('.startweek').innerHTML - 100) || timeslot > weektype_schedules[i].querySelector('.endweek').innerHTML)
+                {
+                    time[j].classList.add("visually-hidden");
+                }
+                else
+                {
+                    startweek = timeslot;
+                    length += 1;
+                }
+            }
+            days = weektype_schedules[i].querySelectorAll('div.days')
+            for (let l = 0; l < 7; l++)
+            {
+                days[l].style.width = `${length * 90}px`
+                let week_activity = days[l].querySelectorAll('.activity');
+                let y = 0;
+                for (let k = 0; k < week_activity.length; k++)
+                {
+                    st_input = week_activity[k].querySelector('.start_time').innerHTML
+                    start_time = Number(st_input[0] + st_input[1] + st_input[2] + st_input[3])
+                    timeslot = Number(st_input[0] + st_input[1] + "00") + 100
+                    if (k == 0)
+                    {
+                        prev = startweek;
+                    }
+                    else
+                    {
+                        prev = week_activity[k - 1].querySelector('.end_time').innerHTML;
+                    }
+                    prev_hours = Number(prev[0] + prev[1] + "00")
+                    x = (((timeslot - prev_hours) / 100) + ((prev_hours - prev - timeslot + 40 + start_time) / 60)) * 90;
+                    y += x;
+                    week_activity[k].style.transform = `translateX(${y}px)`;
+                }
+            }
+        }
+    })
+</script>
+<form id="modify_activity" action="/modify_activity" method="post">
+    <input id="tomodify" name="tomodify" class="visually-hidden" type="text">
+</form>
+<form action="/confirmfixed" method="post" id="confirmfixed">
+    <input id="chosen" name="chosen" type="hidden" value="0">
+    <input id="Q_delete" name="Q_delete" class="visually-hidden" value="no">
+</form>
+<div class="dropdown">
+    <button class="float-start bg pastelred btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Week: ?
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+            <div class="dropdown-item text-capitalize" value="0">None</div>
+            <div class="week_id visually-hidden">0</div>
+        </li>
+        {% for weektype in weektypes %}
+        <li>
+            <div class="dropdown-item text-capitalize" value="{{weektype.week_id}}">{{weektype.name}}</div>
+            <div class="week_id visually-hidden">{{weektype.week_id}}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div><br><br>
+<div id="None_title" class="eventlisttitle mb-3 visually-hidden">None :)</div>
+{% for weektype in weektypes %}
+<div class="weektype_name eventlisttitle mb-1 visually-hidden">
+    {{weektype.name}}
+</div>
+<div class="weektype_status visually-hidden">{{weektype.status}}</div>
+{% endfor %}
+{% for week in weeks %}
+<div class="autoscroll weektype_schedule visually-hidden">
+    <table class="fixedweek bord pastelred">
+        <div class="startweek visually-hidden">{{week[7][0]["start_time"]|time24h}}</div>
+        <div class="endweek visually-hidden">{{week[7][0]["end_time"]|time24h}}</div>
+        <tr class="description">
+            <td><div class="gap"></div></td>
+            <td class="time"><div>0000</div></td>
+            <td class="time"><div>0100</div></td>
+            <td class="time"><div>0200</div></td>
+            <td class="time"><div>0300</div></td>
+            <td class="time"><div>0400</div></td>
+            <td class="time"><div>0500</div></td>
+            <td class="time"><div>0600</div></td>
+            <td class="time"><div>0700</div></td>
+            <td class="time"><div>0800</div></td>
+            <td class="time"><div>0900</div></td>
+            <td class="time"><div>1000</div></td>
+            <td class="time"><div>1100</div></td>
+            <td class="time"><div>1200</div></td>
+            <td class="time"><div>1300</div></td>
+            <td class="time"><div>1400</div></td>
+            <td class="time"><div>1500</div></td>
+            <td class="time"><div>1600</div></td>
+            <td class="time"><div>1700</div></td>
+            <td class="time"><div>1800</div></td>
+            <td class="time"><div>1900</div></td>
+            <td class="time"><div>2000</div></td>
+            <td class="time"><div>2100</div></td>
+            <td class="time"><div>2200</div></td>
+            <td class="time"><div>2300</div></td>
+        </tr>
+        <tr>
+            <th class="days">M</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[0] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">T</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[1] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">W</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[2] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">T</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[3] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">F</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[4] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">S</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[5] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th class="days">S</th>
+            <td colspan="24">
+                <div class="days">
+                    {% for activity in week[6] %}
+                    <button class="activity bg2 pastelred black_text" style="width:{{activity.duration * 90}}px;">
+                        <div class="visually-hidden">{{activity.activity_id}}</div>
+                        <div><b>{{activity.activity}}</b></div>
+                        {% if activity.description %}
+                            <div class="description">{{activity.description}}</div>
+                        {% endif %}
+                        <div><span class="start_time">{{activity.start_time|time24h}}</span> - <span class="end_time">{{activity.end_time|time24h}}</span></div>
+                    </button>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+{% if weeks %}
+<button class="mt-2 mb-3 mx-2 bg pastelred btn btn-secondary" form="confirmfixed" formmethod="post" type="submit">Pick?</button>
+<button class="mt-2 mb-3 mx-2 bg pastelred btn btn-secondary" id="delete">Delete</button>
+{% endif %}
+<form action="/fixed" method="post">
+    <div class="bord pastelred mb-2 pb-2">
+        <div class="wrap">
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="activity">Activity:</label></th>
+                    <td width="240px"><input class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="activity" name="activity" type="text"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                    <td width="240px"><input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="wrap">
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="day">Day(s):</label></th>
+                    <td width="240px" class="float-start mx-auto w-auto">
+                        <input type="checkbox" id="mon" name="mon" value="Mon">
+                        <label for="mon">Mon</label>
+                        <input type="checkbox" id="tue" name="tue" value="Tue">
+                        <label for="tue">Tue</label>
+                        <input type="checkbox" id="wed" name="wed" value="Wed">
+                        <label for="wed">Wed</label>
+                        <input type="checkbox" id="thu" name="thu" value="Thu">
+                        <label for="thu">Thu</label>
+                        <input type="checkbox" id="fri" name="fri" value="Fri">
+                        <label for="fri">Fri</label>
+                        <input type="checkbox" id="sat" name="sat" value="Sat">
+                        <label for="sat">Sat</label>
+                        <input type="checkbox" id="sun" name="sun" value="Sun">
+                        <label for="sun">Sun</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="wrap">
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="weektype">Week:</label></th>
+                    <td class="text-capitalize" width="240px">
+                        <input class="float-start mx-auto w-auto" list="weektypes" autocomplete="off" placeholder="(Odd, Even, etc.)" name="weektype" id="weektype">
+                        <datalist id="weektypes">
+                            {% for weektype in weektypes %}
+                            <option value="{{weektype.name}}">{{weektype.name}}</option>
+                            {% endfor %}
+                        </datalist>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th class="restrict101" width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
+                    <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time">-<input class="float-end mx-auto w-auto" autocomplete="off" id="end_time" name="end_time" type="time"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <button class="btn btn-primary bg pastelred mb-5" type="submit">Add</button>
+</form>
+{% endblock %}

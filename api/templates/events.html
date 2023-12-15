@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Events
+{% endblock %}
+
+{% block main %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (screen.width < screen.height)
+            {
+                eventtime = document.querySelectorAll('.eventtime')
+                for (let i = 0; i < eventtime.length; i++)
+                {
+                    eventtime[i].classList.add("visually-hidden");
+                }
+            };
+            let events = document.querySelectorAll('.eventname');
+            for (let i = 0; i < events.length; i++) {
+                events[i].style.cursor = "pointer";
+                events[i].addEventListener('click', function(){
+                    document.querySelector('#tomodify').value = events[i].querySelector('.visually-hidden').innerHTML;
+                    document.getElementById("modify_event").submit();
+                });
+            }
+        });
+    </script>
+    <form action="/events" method="post">
+        <div class="bord pastelred mb-2 pb-2">
+            <div class="wrap">
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="event">Event:</label></th>
+                        <td width="240px"><input class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="event" name="event" type="text"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                        <td width="240px"><input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="wrap">
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="date">Date:</label></th>
+                        <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="date" name="date" type="date"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
+                        <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time">-<input class="float-end mx-auto w-auto" autocomplete="off" id="end_time" name="end_time" type="time"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-primary bg pastelred mb-5" type="submit">Save</button>
+    </form>
+
+    {% if Events%}
+    <div class="eventlisttitle mt-1 mb-2">Upcoming!</div>
+    <div class="mb-1" id="fineprint">* Click on specific event name to modify details :)</div>
+    <table text-align="left" class="table-sm text-wrap text-break" width="95%">
+        <thead>
+            <tr class="bg2 pastelred">
+                <th>Event</th>
+                <th>Date</th>
+                <th class="eventtime">Time</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle">
+            {% for event in Events %}
+            <tr>
+                <form id="modify_event" action="/modify_event" method="post">
+                    <input id="tomodify" name="tomodify" class="visually-hidden" type="text">
+                    <td class="eventname">
+                        <div class="visually-hidden">{{event.event_id}}</div>
+                        {% if event.description %}
+                            <div>{{event.event}}</div><div class="description">{{event.description}}</div>
+                        {% else %}
+                            <div>{{event.event}}</div>
+                        {% endif %}
+                    </td>
+                </form>
+                <td>{{event.date|date}}</td>
+                <td class="eventtime">
+                {% if event.start_time and event.end_time%}
+                    {{event.start_time|time12h}} - {{event.end_time|time12h}}
+                {% elif event.start_time %}
+                    {{event.start_time|time12h}}
+                {% elif event.end_time %}
+                    ? - {{event.end_time|time12h}}
+                {% else %}
+                -
+                {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

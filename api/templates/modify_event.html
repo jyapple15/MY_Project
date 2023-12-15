@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Modify event
+{% endblock %}
+
+{% block main %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector("#delete").addEventListener("click", function(){
+                document.querySelector("#Q_delete").value = "yes"
+                document.querySelector("#modified_event").submit()
+            })
+        })
+    </script>
+    <form id="modified_event" action="/modified_event" method="post">
+        <div><input id="Q_delete" name="Q_delete" class="visually-hidden" value="no"></div>
+        <div><input id="event_id" name="event_id" class="visually-hidden" value="{{event["event_id"]}}"></div>
+        <div class="bord pastelred mb-2 pb-2">
+            <div class="wrap">
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="event">Event:</label></th>
+                        <td width="240px"><input class="float-start" autocomplete="off" autofocus class="mx-auto w-auto" id="event" name="event" type="text" value="{{event["event"]}}"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="description">Description:</label></th>
+                        <td width="240px">
+                            {% if event["description"] %}
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text" value="{{event["description"]}}">
+                            {% else %}
+                            <input class="float-start" autocomplete="off" class="mx-auto w-auto" id="description" name="description" type="text">
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="wrap">
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="date">Date:</label></th>
+                        <td width="240px"><input class="float-start mx-auto w-auto" autocomplete="off" id="date" name="date" type="date" value="{{event["date"]}}"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th class="restrict101" width="101px"><label class="float-end pe-1" for="start_time">Time:</label></th>
+                        <td width="240px">
+                            {% if event["start_time"]%}
+                            <input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time" value="{{event["start_time"]}}">
+                            {% else %}
+                            <input class="float-start mx-auto w-auto" autocomplete="off" id="start_time" name="start_time" type="time">
+                            {% endif%}
+                            -
+                            {% if event["end_time"] %}
+                            <input class="float-end mx-auto w-auto" autocomplete="off" id="end_time" name="end_time" type="time" value="{{event["end_time"]}}">
+                            {% else %}
+                            <input class="float-end mx-auto w-auto" autocomplete="off" id="end_time" name="end_time" type="time">
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-primary bg pastelred mb-5 mx-2" type="submit">Update</button>
+        <button class="btn btn-primary bg pastelred mb-5 mx-2" id="delete">Delete</button>
+    </form>
+{% endblock %}
