@@ -10,7 +10,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-# Helpers.py (Initially)
+# Helpers.py (Initially) (Added/Edited)
 def apology(message, code=400):
     """Render message as an apology to user."""
     return render_template("apology.html", code=code, message=message), code
