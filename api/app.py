@@ -107,7 +107,7 @@ Session(app)
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://")
 # db = SQL(uri)
-db = SQL(sqlite:///project.db)
+db = SQL(postgresql://project.db)
 
 
 @app.after_request
