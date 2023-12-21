@@ -10,6 +10,10 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
+# (Added/Edited)
+from flask_mongoengine import MongoEngine
+db = MongoEngine()
+
 # Helpers.py (Initially) (Added/Edited)
 def apology(message, code=400):
     """Render message as an apology to user."""
@@ -107,7 +111,7 @@ Session(app)
 #if uri.startswith("postgres://"):
 #    uri = uri.replace("postgres://", "postgresql://")
 #db = SQL(uri)
-db = SQL("sqlite:///project.db")
+#db = SQL("sqlite:///project.db")
 # postgresql://your_username:your_password@postgresql:5432/database_name
 
 
