@@ -10,10 +10,6 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-# (Added/Edited)
-from flask_mongoengine import MongoEngine
-db = MongoEngine()
-
 # Helpers.py (Initially) (Added/Edited)
 def apology(message, code=400):
     """Render message as an apology to user."""
@@ -107,10 +103,10 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database (Added/Edited)
-#uri = os.getenv("DATABASE_URL")
-#if uri.startswith("postgres://"):
-#    uri = uri.replace("postgres://", "postgresql://")
-#db = SQL(uri)
+uri = os.getenv("DATABASE_URL")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://")
+db = SQL(uri)
 #db = SQL("sqlite:///project.db")
 # postgresql://your_username:your_password@postgresql:5432/database_name
 

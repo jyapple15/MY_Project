@@ -1,7 +1,6 @@
 cs50
 Flask
 Flask-Session
-flask-mongoengine
 gunicorn
 psycopg2-binary~=2.9.3
 requests
