@@ -582,7 +582,6 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
-        session.modified = True
         session["color"] = rows[0]["color"]
 
         # Redirect user to home page
