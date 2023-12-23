@@ -583,6 +583,7 @@ def login():
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
         session["color"] = rows[0]["color"]
+        print(session["user_id"])
 
         # Redirect user to home page
         return redirect("/")
