@@ -46,7 +46,6 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def temp():
-    session["user_id"] = 1
     """Show today schedule"""
     timestamp = datetime.datetime.now()
     Ndate = timestamp.strftime("%Y-%m-%d")
@@ -583,6 +582,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
+        session.modified = True
         session["color"] = rows[0]["color"]
 
         # Redirect user to home page
