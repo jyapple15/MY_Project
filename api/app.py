@@ -46,6 +46,7 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 @login_required
 def temp():
+    session["user_id"] = 1
     """Show today schedule"""
     timestamp = datetime.datetime.now()
     Ndate = timestamp.strftime("%Y-%m-%d")
