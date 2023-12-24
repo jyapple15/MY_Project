@@ -33,18 +33,18 @@ def login_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        store = requests.get("https://my-planner123.vercel.app/login")
-        #store = requests.get("https://google.com")
+        response = requests.get("https://my-planner123.vercel.app/login")
+        #response = requests.get("https://google.com")
         try: 
-            #if store.usercookie["user_id"] is None:
-            #if store.cookies["1P_JAR"]:
-            if store.cookies["user_id"]:
+            #if response.usercookie["user_id"] is None:
+            #if response.cookies["1P_JAR"]:
+            if response.cookies["user_id"]:
                 return redirect("/login")
             return f(*args, **kwargs)
         except:
             print("cookie absent")
-            print(store.cookies)
-            #print(store.cookies["1P_JAR"])
+            print(response.cookies)
+            #print(response.cookies["1P_JAR"])
             return redirect("/login")
     return decorated_function
 
