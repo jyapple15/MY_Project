@@ -9,10 +9,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from api.helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
 
-# Added to store userinfo (Does not persist across APIs)
-from http import cookies
-import requests
-
 # Configure application
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
@@ -28,7 +24,7 @@ app.jinja_env.filters["date"] = date
 app.jinja_env.filters["overdue"] = overdue
 
 # Configure session to use filesystem (instead of signed cookies)
-#app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = False
 #app.config["SESSION_TYPE"] = "filesystem"
 #Session(app)
 
@@ -588,16 +584,6 @@ def login():
         # Remember which user has logged in (Original Flask)
         session["user_id"] = rows[0]["id"]
         session["color"] = rows[0]["color"]
-
-        # Added to store userinfo (Else does not persist across APIs)
-        #usercookie = cookies.SimpleCookie()
-        #usercookie["user_id"] = rows[0]["id"]
-        #usercookie["color"] = rows[0]["color"]
-        #usercookie["user_id"]['max-age'] = 1800
-        #usercookie["color"]['max-age'] = 1800
-
-        #requestsJar = requests.cookies.RequestsCookieJar()
-        #requestsJar.set("user_id", rows[0]["id"], domain="my-planner123.vercel.app", path="/login")
 
         # Redirect user to home page
         return redirect("/")

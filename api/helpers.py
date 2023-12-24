@@ -10,7 +10,7 @@ def apology(message, code=400):
     """Render message as an apology to user."""
     return render_template("apology.html", code=code, message=message), code
 
-# Original
+
 def login_required(f):
     """
     Decorate routes to require login.
@@ -24,34 +24,6 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-#Edited
-def login_requiredddd(f):
-    """
-    Decorate routes to require login.
-
-    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
-    """
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        requestsJar = requests.cookies.RequestsCookieJar()
-        requestsJar.set("user_id", "1", domain="my-planner123.vercel.app", path="/login")
-
-        response = requests.get("https://my-planner123.vercel.app/login", cookies=requestsJar)
-        #response = requests.get("https://google.com")
-        
-        try: 
-            #if response.usercookie["user_id"] is None:
-            #if response.cookies["1P_JAR"]:
-            if response.cookies["user_id"]:
-                session["user_id"] = 1
-                return f(*args, **kwargs)
-            return redirect("/login")
-        except:
-            print("cookie absent")
-            print(requestsJar)
-            #print(response.cookies["1P_JAR"])
-            return redirect("/login")
-    return decorated_function
 
 def days_in_month(calendar_month, calendar_year):
     days = 0
