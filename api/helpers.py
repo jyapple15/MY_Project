@@ -39,6 +39,7 @@ def login_required(f):
                 return redirect("/login")
             return f(*args, **kwargs)
         except:
+            print("cookie absent")
             return redirect("/login")
     return decorated_function
 
