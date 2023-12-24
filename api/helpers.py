@@ -6,6 +6,10 @@ import datetime
 from flask import redirect, render_template, request, session
 from functools import wraps
 
+def setuserinfo(rows, session):
+    session["user_id"] = rows[0]["id"]
+    session["color"] = rows[0]["color"]
+    return
 
 def apology(message, code=400):
     """Render message as an apology to user."""

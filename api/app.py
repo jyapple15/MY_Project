@@ -7,7 +7,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from api.helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
+from api.helpers import setuserinfo, apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
 
 # Configure application
 app = Flask(__name__)
@@ -581,11 +581,11 @@ def login():
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in (Original Flask)
-        session["user_id"] = rows[0]["id"]
-        session["color"] = rows[0]["color"]
+        # session["user_id"] = rows[0]["id"]
+        # session["color"] = rows[0]["color"]
 
         # Remember which user has logged in (Since sessions don't persist between API calls) (EDITED)
-        
+        setuserinfo(rows, session)
 
         # Redirect user to home page
         return redirect("/")
