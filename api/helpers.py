@@ -33,8 +33,12 @@ def login_required(f):
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        requestsJar = requests.cookies.RequestsCookieJar()
+        requestsJar.set("user_id", 1, domain="my-planner123.vercel.app", path="/login")
+
         response = requests.get("https://my-planner123.vercel.app/login")
         #response = requests.get("https://google.com")
+        
         try: 
             #if response.usercookie["user_id"] is None:
             #if response.cookies["1P_JAR"]:
