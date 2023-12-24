@@ -43,6 +43,7 @@ def login_required(f):
             return f(*args, **kwargs)
         except:
             print("cookie absent")
+            print(store)
             #print(store.cookies["1P_JAR"])
             return redirect("/login")
     return decorated_function
