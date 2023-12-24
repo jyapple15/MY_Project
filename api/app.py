@@ -15,7 +15,7 @@ import requests
 
 # Configure application
 app = Flask(__name__)
-app.secret_key = environ.get("SECRET_KEY")
+app.secret_key = os.getenv("SECRET_KEY")
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
