@@ -37,7 +37,7 @@ def login_required(f):
         store = requests.get("https://google.com")
         try: 
             #if store.usercookie["user_id"] is None:
-            if store.cookies["1P_JAR"] is None:
+            if store.cookies["1P_JAR"]:
                 return redirect("/login")
             return f(*args, **kwargs)
         except:
