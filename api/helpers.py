@@ -10,6 +10,19 @@ def apology(message, code=400):
     """Render message as an apology to user."""
     return render_template("apology.html", code=code, message=message), code
 
+# Original
+def login_required_ddd(f):
+    """
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
 
 def login_required(f):
     """
@@ -20,8 +33,7 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         store = requests.get("https://my-planner123.vercel.app/login")
-        if store.usercookie["user_id"] is None:
-        # if session.get("user_id") is None:
+        if usercookie not in store:
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
