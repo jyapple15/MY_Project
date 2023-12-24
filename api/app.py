@@ -7,7 +7,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from api.helpers import apology, date, time12h, time24h, tominutes, days_in_month, overdue
+from api.helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
 
 # Configure application
 app = Flask(__name__)
