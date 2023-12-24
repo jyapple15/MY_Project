@@ -8,6 +8,7 @@ from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from api.helpers import apology, date, time12h, time24h, tominutes, days_in_month, overdue
+from functools import wraps
 
 def login_required(f):
     """
