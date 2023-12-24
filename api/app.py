@@ -23,7 +23,10 @@ app.jinja_env.filters["time24h"] = time24h
 app.jinja_env.filters["date"] = date
 app.jinja_env.filters["overdue"] = overdue
 
-app.config["SESSION_PERMANENT"] = False
+# Configure session to timeout
+app.config["SESSION_PERMANENT"] = True
+session.permanent = True
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=15)
 
 # Configure session to use filesystem (instead of signed cookies) [REMOVED]
 # app.config["SESSION_TYPE"] = "filesystem"
