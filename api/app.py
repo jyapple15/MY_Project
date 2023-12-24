@@ -7,7 +7,20 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from api.helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
+from api.helpers import apology, date, time12h, time24h, tominutes, days_in_month, overdue
+
+def login_required(f):
+    """
+    Decorate routes to require login.
+
+    https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
 
 # Configure application
 app = Flask(__name__)
@@ -580,9 +593,12 @@ def login():
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
-        # Remember which user has logged in
+        # Remember which user has logged in (Original Flask)
         session["user_id"] = rows[0]["id"]
         session["color"] = rows[0]["color"]
+
+        # Remember which user has logged in (Since sessions don't persist between API calls) (EDITED)
+        
 
         # Redirect user to home page
         return redirect("/")
