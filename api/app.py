@@ -12,6 +12,9 @@ from api.helpers import apology, login_required, date, time12h, time24h, tominut
 # Configure application
 app = Flask(__name__)
 
+# Added to ensure sessions persist
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
