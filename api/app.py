@@ -11,6 +11,7 @@ from api.helpers import apology, login_required, date, time12h, time24h, tominut
 
 # Added to store userinfo (Does not persist across APIs)
 from http import cookies
+import requests
 
 # Configure application
 app = Flask(__name__)
@@ -593,6 +594,9 @@ def login():
         usercookie["color"] = rows[0]["color"]
         usercookie["user_id"]['max-age'] = 1800
         usercookie["color"]['max-age'] = 1800
+
+        requestsJar = requests.cookies.RequestsCookieJar()
+        requestsJar.set("user_id", rows[0]["id"], domain="my-planner123.vercel.app", path="/login")
 
         # Redirect user to home page
         return redirect("/")

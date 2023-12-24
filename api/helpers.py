@@ -38,12 +38,12 @@ def login_required(f):
         try: 
             #if store.usercookie["user_id"] is None:
             #if store.cookies["1P_JAR"]:
-            if store.cookies["usercookie"]:
+            if store.cookies["user_id"]:
                 return redirect("/login")
             return f(*args, **kwargs)
         except:
             print("cookie absent")
-            print(store.text)
+            print(store.cookies)
             #print(store.cookies["1P_JAR"])
             return redirect("/login")
     return decorated_function
