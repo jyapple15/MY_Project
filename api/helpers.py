@@ -38,7 +38,7 @@ def login_required(f):
         try: 
             #if store.usercookie["user_id"] is None:
             #if store.cookies["1P_JAR"]:
-            if store.cookies["user_id"]:
+            if store.cookies["usercookie"]:
                 return redirect("/login")
             return f(*args, **kwargs)
         except:
