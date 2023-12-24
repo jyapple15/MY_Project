@@ -3,7 +3,7 @@ import datetime
 
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
-from flask_session import Session
+# from flask_session import Session [REMOVED]
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -25,7 +25,7 @@ app.jinja_env.filters["overdue"] = overdue
 
 # Configure session to timeout
 app.config["SESSION_PERMANENT"] = True
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=15)
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(minutes=15)
 
 # Configure session to use filesystem (instead of signed cookies) [REMOVED]
 # app.config["SESSION_TYPE"] = "filesystem"
