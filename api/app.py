@@ -9,11 +9,11 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from api.helpers import apology, login_required, date, time12h, time24h, tominutes, days_in_month, overdue
 
+# Added to store userinfo (Does not persist across APIs)
+from http import cookies
+
 # Configure application
 app = Flask(__name__)
-
-# Added to ensure sessions persist
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -587,7 +587,12 @@ def login():
         session["user_id"] = rows[0]["id"]
         session["color"] = rows[0]["color"]
 
-        # Remember which user has logged in (Since sessions don't persist between API calls) (EDITED)
+        # Added to store userinfo (Else does not persist across APIs)
+        usercookie = cookies.SimpleCookie()
+        usercookie["user_id"] = rows[0]["id"]
+        usercookie["color"] = rows[0]["color"]
+        usercookie["user_id"]['max-age'] = 1800
+        usercookie["color"]['max-age'] = 1800
 
         # Redirect user to home page
         return redirect("/")
