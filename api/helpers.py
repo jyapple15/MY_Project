@@ -24,6 +24,7 @@ def login_required_ddd(f):
         return f(*args, **kwargs)
     return decorated_function
 
+#Edited
 def login_required(f):
     """
     Decorate routes to require login.
@@ -33,11 +34,13 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         store = requests.get("https://my-planner123.vercel.app/login")
-        if usercookie not in store:
+        try: 
+            if store.usercookie["user_id"] is None:
+                return redirect("/login")
+            return f(*args, **kwargs)
+        except:
             return redirect("/login")
-        return f(*args, **kwargs)
     return decorated_function
-
 
 def days_in_month(calendar_month, calendar_year):
     days = 0
