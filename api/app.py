@@ -27,7 +27,7 @@ app.jinja_env.filters["date"] = date
 app.jinja_env.filters["overdue"] = overdue
 
 # Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
@@ -589,14 +589,14 @@ def login():
         session["color"] = rows[0]["color"]
 
         # Added to store userinfo (Else does not persist across APIs)
-        usercookie = cookies.SimpleCookie()
-        usercookie["user_id"] = rows[0]["id"]
-        usercookie["color"] = rows[0]["color"]
-        usercookie["user_id"]['max-age'] = 1800
-        usercookie["color"]['max-age'] = 1800
+        #usercookie = cookies.SimpleCookie()
+        #usercookie["user_id"] = rows[0]["id"]
+        #usercookie["color"] = rows[0]["color"]
+        #usercookie["user_id"]['max-age'] = 1800
+        #usercookie["color"]['max-age'] = 1800
 
-        requestsJar = requests.cookies.RequestsCookieJar()
-        requestsJar.set("user_id", rows[0]["id"], domain="my-planner123.vercel.app", path="/login")
+        #requestsJar = requests.cookies.RequestsCookieJar()
+        #requestsJar.set("user_id", rows[0]["id"], domain="my-planner123.vercel.app", path="/login")
 
         # Redirect user to home page
         return redirect("/")

@@ -11,7 +11,7 @@ def apology(message, code=400):
     return render_template("apology.html", code=code, message=message), code
 
 # Original
-def login_required_ddd(f):
+def login_required(f):
     """
     Decorate routes to require login.
 
@@ -25,7 +25,7 @@ def login_required_ddd(f):
     return decorated_function
 
 #Edited
-def login_required(f):
+def login_requiredddd(f):
     """
     Decorate routes to require login.
 
@@ -34,20 +34,21 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         requestsJar = requests.cookies.RequestsCookieJar()
-        requestsJar.set("user_id", 1, domain="my-planner123.vercel.app", path="/login")
+        requestsJar.set("user_id", "1", domain="my-planner123.vercel.app", path="/login")
 
-        response = requests.get("https://my-planner123.vercel.app/login")
+        response = requests.get("https://my-planner123.vercel.app/login", cookies=requestsJar)
         #response = requests.get("https://google.com")
         
         try: 
             #if response.usercookie["user_id"] is None:
             #if response.cookies["1P_JAR"]:
             if response.cookies["user_id"]:
-                return redirect("/login")
-            return f(*args, **kwargs)
+                session["user_id"] = 1
+                return f(*args, **kwargs)
+            return redirect("/login")
         except:
             print("cookie absent")
-            print(response.cookies)
+            print(requestsJar)
             #print(response.cookies["1P_JAR"])
             return redirect("/login")
     return decorated_function
